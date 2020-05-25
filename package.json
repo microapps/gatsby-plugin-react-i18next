@@ -1,0 +1,39 @@
+{
+  "name": "gatsby-plugin-react-i18next",
+  "version": "0.0.1",
+  "description": "Gatsby react-i18next plugin",
+  "main": "index.js",
+  "types": "dist/index.d.ts",
+  "author": "Dmitriy Nevzorov",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-component",
+    "i18next",
+    "i18n"
+  ],
+  "scripts": {
+    "build": "tsc --declaration --outDir dist",
+    "dev": "tsc --watch --declaration --outDir dist"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.32",
+    "@types/react": "^16.9.35",
+    "gatsby": "^2.22.9",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "browser-lang": "^0.1.0",
+    "glob": "^7.1.6",
+    "i18next": "^19.4.4",
+    "react-i18next": "^11.5.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.2.0",
+    "react": "^16.12.0"
+  }
+}

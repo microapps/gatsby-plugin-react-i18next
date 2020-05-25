@@ -1,0 +1,25 @@
+.main-header {
+  background: rebeccapurple;
+  margin-bottom: 1.45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.45rem 1.0875rem;
+}
+
+.main-header a {
+  color: white;
+  text-decoration: none;
+}
+
+.languages {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.languages > li {
+  padding: 0 0.45rem;
+  margin: 0;
+}
