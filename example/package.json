@@ -22,7 +22,6 @@
     "@babel/cli": "^7.8.4",
     "aws-sdk": "^2.683.0",
     "babel-plugin-i18next-extract": "^0.7.2",
-    "babel-preset-react-app": "^9.1.2",
     "mkdirp": "^1.0.4",
     "prettier": "2.0.5"
   },
@@ -38,7 +37,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "extract": "NODE_ENV=development yarn run babel -f babel.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp",
+    "extract": "yarn run babel -f babel.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp",
     "translate": "yarn run extract && node translate.js"
   },
   "repository": {

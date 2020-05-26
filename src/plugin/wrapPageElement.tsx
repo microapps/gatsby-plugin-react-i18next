@@ -6,26 +6,26 @@ import browserLang from 'browser-lang';
 import {LANGUAGE_KEY} from '../lib/const';
 import i18next, {i18n as I18n} from 'i18next';
 import {I18nextProvider} from 'react-i18next';
-import {Context} from '../lib/context';
+import {I18nextContext} from '../lib/i18nextContext';
 
 const i18n = i18next.createInstance();
 
 const withI18next = (i18n: I18n, context: I18NextContext) => (children: any) => {
   return (
     <I18nextProvider i18n={i18n}>
-      <Context.Provider value={context}>{children}</Context.Provider>
+      <I18nextContext.Provider value={context}>{children}</I18nextContext.Provider>
     </I18nextProvider>
   );
 };
 
 export const wrapPageElement = (
   {element, props}: WrapPageElementBrowserArgs<any, PageContext>,
-  {i18nextOptions = {}, autodetect = true}: PluginOptions
+  {i18nextOptions = {}, redirect = true}: PluginOptions
 ) => {
   if (!props) return;
   const {pageContext, location} = props;
   const {routed, language, languages, originalPath, defaultLanguage, resources} = pageContext.i18n;
-  const isRedirect = autodetect && !routed;
+  const isRedirect = redirect && !routed;
 
   if (isRedirect) {
     const {search} = location;

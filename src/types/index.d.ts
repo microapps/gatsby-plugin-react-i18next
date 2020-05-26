@@ -4,7 +4,7 @@ export type PluginOptions = {
   languages: string[];
   defaultLanguage: string;
   path: string;
-  autodetect: boolean;
+  redirect: boolean;
   i18nextOptions: InitOptions;
 };
 

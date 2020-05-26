@@ -1,7 +1,7 @@
 import {Namespace, useTranslation, UseTranslationOptions} from 'react-i18next';
 import {useContext} from 'react';
 import {navigate as gatsbyNavigate} from 'gatsby';
-import {Context} from './context';
+import {I18nextContext} from './i18nextContext';
 import {NavigateOptions} from '@reach/router';
 import {LANGUAGE_KEY} from './const';
 
@@ -10,7 +10,7 @@ declare var __PATH_PREFIX__: string | undefined;
 
 export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
   const {i18n, t, ready} = useTranslation(ns, options);
-  const context = useContext(Context);
+  const context = useContext(I18nextContext);
 
   if (typeof window === 'undefined') return;
   const {routed, defaultLanguage} = context;

@@ -32,7 +32,7 @@ module.exports = {
     },
     {
       // including a plugin from outside the plugins folder needs the path to it
-      resolve: 'gatsby-plugin-react-i18next',
+      resolve: `gatsby-plugin-react-i18next`,
       options: {
         languages,
         defaultLanguage,
