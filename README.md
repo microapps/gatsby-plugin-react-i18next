@@ -275,7 +275,7 @@ module.exports = {
 ```json
 {
   "scripts": {
-    "extract": "yarn run babel -f babel.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
+    "extract": "yarn run babel -f babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   }
 }
 ```

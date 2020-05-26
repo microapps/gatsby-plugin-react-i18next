@@ -12,7 +12,6 @@ export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
   const {i18n, t, ready} = useTranslation(ns, options);
   const context = useContext(I18nextContext);
 
-  if (typeof window === 'undefined') return;
   const {routed, defaultLanguage} = context;
 
   const getUrlLanguage = (language: string) => {

@@ -1,1 +1,4 @@
-module.exports = require('./dist/gatsby-ssr');
+const ssr = require('./dist/gatsby-ssr');
+console.log(ssr);
+
+module.exports = ssr;

@@ -28,14 +28,17 @@
     "gatsby-ssr.js"
   ],
   "scripts": {
-    "build": "tsc --declaration --outDir dist",
-    "dev": "tsc --watch --declaration --outDir dist",
-    "prepare": "yarn run build",
+    "build:ts": "babel src --out-dir dist --extensions '.ts,.tsx'",
+    "build:defs": "tsc --declaration --outDir dist --emitDeclarationOnly",
+    "prepare": "NODE_ENV=production yarn run build:ts && yarn run build:defs",
+    "dev": "babel -w src --out-dir dist --extensions '.ts,.tsx'",
     "release": "release-it"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@types/bluebird": "^3.5.32",
     "@types/react": "^16.9.35",
+    "babel-preset-gatsby-package": "^0.4.2",
     "gatsby": "^2.22.9",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
