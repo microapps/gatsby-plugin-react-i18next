@@ -32,7 +32,7 @@
     "build:defs": "tsc --declaration --outDir dist --emitDeclarationOnly",
     "dev": "babel -w src --out-dir dist --extensions .ts,.tsx --ignore **/*.d.ts",
     "prepare": "NODE_ENV=production yarn run build:ts && yarn run build:defs",
-    "format": "prettier --write **/*.{js,jsx,json,ts,tsx,md}",
+    "format": "prettier --write '**/*.{js,jsx,json,ts,tsx,md}'",
     "release": "release-it"
   },
   "devDependencies": {
