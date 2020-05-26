@@ -1,4 +1,2 @@
-const ssr = require('./dist/gatsby-ssr');
-console.log(ssr);
-
-module.exports = ssr;
+const {wrapPageElement} = require('./dist/plugin/wrapPageElement');
+exports.wrapPageElement = wrapPageElement;

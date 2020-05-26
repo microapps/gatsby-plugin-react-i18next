@@ -1,5 +1,5 @@
 import React from 'react';
-import {I18NextContext} from '../types';
+import {I18NextContext} from './types';
 
 export const I18nextContext = React.createContext<I18NextContext>({
   language: 'en',

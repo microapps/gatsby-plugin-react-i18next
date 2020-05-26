@@ -1,1 +1,2 @@
-module.exports = require('./dist/gatsby-browser');
+const {wrapPageElement} = require('./dist/plugin/wrapPageElement');
+exports.wrapPageElement = wrapPageElement;

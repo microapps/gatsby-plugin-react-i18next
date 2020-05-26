@@ -28,10 +28,11 @@
     "gatsby-ssr.js"
   ],
   "scripts": {
-    "build:ts": "babel src --out-dir dist --extensions '.ts,.tsx'",
+    "build:ts": "babel src --out-dir dist --extensions .ts,.tsx --ignore **/*.d.ts",
     "build:defs": "tsc --declaration --outDir dist --emitDeclarationOnly",
+    "dev": "babel -w src --out-dir dist --extensions .ts,.tsx --ignore **/*.d.ts",
     "prepare": "NODE_ENV=production yarn run build:ts && yarn run build:defs",
-    "dev": "babel -w src --out-dir dist --extensions '.ts,.tsx'",
+    "format": "prettier --write **/*.{js,jsx,json,ts,tsx,md}",
     "release": "release-it"
   },
   "devDependencies": {
@@ -72,6 +73,11 @@
     },
     "npm": {
       "publish": false
+    },
+    "hooks": {
+      "before:init": [
+        "yarn run format"
+      ]
     }
   }
 }
