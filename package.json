@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-react-i18next",
   "version": "0.0.1",
-  "description": "Gatsby react-i18next plugin",
+  "description": "Easily translate your Gatsby website into multiple languages",
   "main": "index.js",
   "types": "dist/index.d.ts",
   "author": "Dmitriy Nevzorov",
@@ -9,20 +9,31 @@
   "keywords": [
     "react",
     "gatsby",
+    "gatsbyjs",
     "gatsby-plugin",
     "gatsby-component",
     "i18next",
+    "react-i18next",
+    "gatsby-i18n",
     "i18n"
   ],
+  "repository": {
+    "url": "https://github.com/microapps/gatsby-plugin-react-i18next"
+  },
   "scripts": {
     "build": "tsc --declaration --outDir dist",
-    "dev": "tsc --watch --declaration --outDir dist"
+    "dev": "tsc --watch --declaration --outDir dist",
+    "prepare": "yarn run build",
+    "release": "release-it"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.32",
     "@types/react": "^16.9.35",
     "gatsby": "^2.22.9",
+    "husky": "^4.2.5",
     "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "release-it": "^13.6.1",
     "typescript": "^3.9.3"
   },
   "dependencies": {
@@ -35,5 +46,22 @@
   "peerDependencies": {
     "gatsby": "^2.2.0",
     "react": "^16.12.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "release-it": {
+    "git": {
+      "tagName": "v${version}",
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
+    }
   }
 }

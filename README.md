@@ -187,7 +187,7 @@ const Header = ({siteTitle}) => {
 | redirect        | boolean  | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/es` or `/es/page-2`. Otherwise, the pages will render `defaultLangugage` language. |
 | i18nextOptions  | object   | [i18next configuration options](https://www.i18next.com/overview/configuration-options)                                                                                                        |
 
-## API
+## Plugin API
 
 ### `Link`
 
