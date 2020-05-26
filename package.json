@@ -1,6 +1,6 @@
 {
   "name": "gatsby-plugin-react-i18next",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Easily translate your Gatsby website into multiple languages",
   "main": "index.js",
   "types": "dist/index.d.ts",
