@@ -253,7 +253,7 @@ You can use [babel-plugin-i18next-extract](https://i18next-extract.netlify.app) 
 yarn add @babel/cli babel-plugin-i18next-extract -D
 ```
 
-2. create `babel.config.js` file
+2. create `babel-extract.config.js` file (don't name it `babel.config.js`, or it will be used by gatsby)
 
 ```javascript
 module.exports = {

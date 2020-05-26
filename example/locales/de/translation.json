@@ -1,14 +1,13 @@
 {
+  "Page two": "Seite zwei",
+  "Welcome to page 2": "Willkommen auf Seite 2",
   "Home": "Zuhause",
   "NOT FOUND": "NICHT GEFUNDEN",
-  "Hi people": "Hallo Leute",
-  "Now go build something great.": "Jetzt baue etwas Großartiges.",
-  "Go back to the homepage": "Zurück zur Homepage",
-  "Welcome to your new Gatsby site.": "Willkommen auf Ihrer neuen Gatsby Website.",
   "404: Not found": "404: Nicht gefunden",
-  "Page two": "Seite zwei",
+  "Now go build something great.": "Jetzt baue etwas Großartiges.",
   "Go to page 2": "Gehe zu Seite 2",
-  "Welcome to page 2 ()": "Willkommen auf Seite 2 ()",
-  "You just hit a route that doesn't exist... the sadness.": "Du hast gerade eine Route getroffen, die nicht existiert... die Traurigkeit.",
-  "Welcome to page 2": "Willkommen auf Seite 2"
+  "Go back to the homepage": "Zurück zur Homepage",
+  "Hi people": "Hallo Leute",
+  "Welcome to your new Gatsby site.": "Willkommen auf Ihrer neuen Gatsby Website.",
+  "You just hit a route that doesn't exist... the sadness.": "Du hast gerade eine Route getroffen, die nicht existiert... die Traurigkeit."
 }
