@@ -20,6 +20,13 @@
   "repository": {
     "url": "https://github.com/microapps/gatsby-plugin-react-i18next"
   },
+  "files": [
+    "dist",
+    "index.js",
+    "gatsby-browser.js",
+    "gatsby-node.js",
+    "gatsby-ssr.js"
+  ],
   "scripts": {
     "build": "tsc --declaration --outDir dist",
     "dev": "tsc --watch --declaration --outDir dist",
