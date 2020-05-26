@@ -184,13 +184,13 @@ const Header = ({siteTitle}) => {
 
 ## Plugin Options
 
-| Option          | Type     | Description                                                                                                                                                                                    |
-| --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| path            | string   | path to the folder with JSON translations                                                                                                                                                      |
-| languages       | string[] | supported language keys                                                                                                                                                                        |
-| defaultLanguage | string   | default language when visiting `/page` instead of `es/page`                                                                                                                                    |
-| redirect        | boolean  | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/es` or `/es/page-2`. Otherwise, the pages will render `defaultLangugage` language. |
-| i18nextOptions  | object   | [i18next configuration options](https://www.i18next.com/overview/configuration-options)                                                                                                        |
+| Option          | Type     | Description                                                                                                                                                                                                      |
+| --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| path            | string   | path to the folder with JSON translations                                                                                                                                                                        |
+| languages       | string[] | supported language keys                                                                                                                                                                                          |
+| defaultLanguage | string   | default language when visiting `/page` instead of `es/page`                                                                                                                                                      |
+| redirect        | boolean  | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/es` or `/es/page-2`. Otherwise, the pages will render `defaultLangugage` language. Default is `true` |
+| i18nextOptions  | object   | [i18next configuration options](https://www.i18next.com/overview/configuration-options)                                                                                                                          |
 
 ## Plugin API
 
