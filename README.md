@@ -82,7 +82,7 @@ For example:
     |-- footer.json
 ```
 
-The default namespace is `translation`
+The default namespace is `translation`. [Read more about i18next namespaces](https://www.i18next.com/principles/namespaces)
 
 ### Change your components
 
