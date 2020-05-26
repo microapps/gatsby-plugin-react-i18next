@@ -189,7 +189,7 @@ const Header = ({siteTitle}) => {
 
 ## API
 
-### `Link` component
+### `Link`
 
 `Link` component is identical to [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) except that you can provide additional `language` prop to create a link to a page with different language
 
@@ -203,7 +203,7 @@ const SpanishAboutLink = () => (
 );
 ```
 
-### `I18nextContext` react context
+### `I18nextContext`
 
 Use this react context to access language information about the page
 
@@ -221,14 +221,14 @@ Content of the context object
 | defaultLanguage | string   | default language provided in plugin options              |
 | originalPath    | string   | page path in default language                            |
 
-### `useI18next` react hook
+### `useI18next`
 
-This hook returns `I18nextContext`, object and additional helper functions
+This react hook returns `I18nextContext`, object and additional helper functions
 
 | Function       | Description                                                                                                                                                                                                                               |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | navigate       | This is a wrapper around [Gatsby navigate helper function](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) that will navigate to the page in selected language                                        |
-| changeLanguage | A helper function to change language. The first parameter is a language code. Signature: `(language: string, to?: string, options?: NavigateOptions) => Promise<void>'. You can pass additional parameters to navigate to different page. |
+| changeLanguage | A helper function to change language. The first parameter is a language code. Signature: `(language: string, to?: string, options?: NavigateOptions) => Promise<void>`. You can pass additional parameters to navigate to different page. |
 
 `useI18next` also exposes the output of react i18next [`useTranslation`](https://react.i18next.com/latest/usetranslation-hook) so you can use
 
