@@ -12,6 +12,11 @@ Easily translate your Gatsby website into multiple languages.
 
 When you build multilingual sites, Google recommends using different URLs for each language version of a page rather than using cookies or browser settings to adjust the content language on the page. [(read more)](https://support.google.com/webmasters/answer/182192?hl=en&ref_topic=2370587)
 
+## Demo
+
+- [View demo online](https://5ecd0801489011000849a7db--kind-lichterman-5edcb4.netlify.app/)
+- [Source code](/example)
+
 ## How to use
 
 ### Install package
