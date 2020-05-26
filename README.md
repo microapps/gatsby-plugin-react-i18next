@@ -221,6 +221,8 @@ Content of the context object
 | defaultLanguage | string   | default language provided in plugin options              |
 | originalPath    | string   | page path in default language                            |
 
+The same context will be also available in the Gatsby `pageContext.i18n` object
+
 ### `useI18next`
 
 This react hook returns `I18nextContext`, object and additional helper functions
