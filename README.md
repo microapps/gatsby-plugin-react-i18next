@@ -291,6 +291,13 @@ After your messages had been extracted you can use [AWS Translate](https://aws.a
 
 This functionality is out of the scope of this plugin, but you can get the idea from [this script](/example/translate.js)
 
+## Credits
+
+This package is based on:
+
+- [gatsby-plugin-intl](https://github.com/wiziple/gatsby-plugin-intl) by Daewoong Moon
+- [gatsby-i18n-plugin](https://github.com/ikhudo/gatsby-i18n-plugin) by ikhudo
+
 ## License
 
 MIT &copy; [microapps](https://github.com/microapps)
