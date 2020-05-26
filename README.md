@@ -26,7 +26,7 @@ or
 npm install --save gatsby-plugin-react-i18next
 ```
 
-### Add a plugin to your `gatsby-config.js`
+### Configure the plugin
 
 ```javascript
 // In your gatsby-config.js
@@ -62,7 +62,7 @@ For example,
 | [/locales/es/translation.json](/example/locales/es/translation.json) | Spanish  |
 | [/locales/de/translation.json](/example/locales/de/translation.json) | German   |
 
-You can use different namespaces to organize your translations. Use the following file structure.
+You can use different namespaces to organize your translations. Use the following file structure:
 
 ```
 |-- language
@@ -81,11 +81,11 @@ The default namespace is `translation`
 
 ### Change your components
 
-Use react i18next [`useTranslation`](https://react.i18next.com/latest/usetranslation-hook) hook and [`Trans`](https://react.i18next.com/latest/trans-component) component to translate your pages.
+Use react i18next [`useTranslation`](https://react.i18next.com/latest/usetranslation-hook) react hook and [`Trans`](https://react.i18next.com/latest/trans-component) component to translate your pages.
 
 `gatsby-plugin-react-i18next` exposes all [`react-i18next`](https://react.i18next.com/) methods and components.
 
-Replace Gatsby `Link` component with the `Link` component exported from `gatsby-plugin-react-i18next`
+Replace [Gatsby `Link`](https://www.gatsbyjs.org/docs/gatsby-link) component with the `Link` component exported from `gatsby-plugin-react-i18next`
 
 ```javascript
 import React from 'react';
@@ -133,7 +133,7 @@ and in `locales/en/translations.json` you will have
 }
 ```
 
-This example is not using semantic keys (eg `i18nKey`) e.g. the entire message will be used as a key. [Read more](https://www.i18next.com/principles/fallback#key-fallback).
+This example is not using semantic keys instead the entire message will be used as a key. [Read more](https://www.i18next.com/principles/fallback#key-fallback).
 
 ### Changing the language
 
@@ -189,7 +189,9 @@ const Header = ({siteTitle}) => {
 
 ## API
 
-### `Link` component - is identical to [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) expept that you can provide additional `language` prop to create a link to a page with different language
+### `Link` component
+
+`Link` component is identical to [Gatsby Link component](https://www.gatsbyjs.org/docs/gatsby-link/) except that you can provide additional `language` prop to create a link to a page with different language
 
 ```javascript
 import {Link} from 'gatsby-plugin-react-i18next';
@@ -211,20 +213,22 @@ const context = React.useContext(I18nextContext);
 
 Content of the context object
 
-Attribute | Type | Description
-language | string | current language
-languages | string[] | supported language keys
-routed | boolean | if `false` it means that the page is in default language
-defaultLanguage | string | default language provided in plugin options
-originalPath | string | page path in default language
+| Attribute       | Type     | Description                                              |
+| --------------- | -------- | -------------------------------------------------------- |
+| language        | string   | current language                                         |
+| languages       | string[] | supported language keys                                  |
+| routed          | boolean  | if `false` it means that the page is in default language |
+| defaultLanguage | string   | default language provided in plugin options              |
+| originalPath    | string   | page path in default language                            |
 
 ### `useI18next` react hook
 
 This hook returns `I18nextContext`, object and additional helper functions
 
-Function | Description
-navigate | This is a wrapper around [Gatsby navigate helper function](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) that will navigate to the page in selected language
-changeLanguage | A helper function to change language. The first parameter is a language code. Signature: `(language: string, to?: string, options?: NavigateOptions) => Promise<void>'. You can pass additional parameters to navigate to different page.
+| Function       | Description                                                                                                                                                                                                                               |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| navigate       | This is a wrapper around [Gatsby navigate helper function](https://www.gatsbyjs.org/docs/gatsby-link/#how-to-use-the-navigate-helper-function) that will navigate to the page in selected language                                        |
+| changeLanguage | A helper function to change language. The first parameter is a language code. Signature: `(language: string, to?: string, options?: NavigateOptions) => Promise<void>'. You can pass additional parameters to navigate to different page. |
 
 `useI18next` also exposes the output of react i18next [`useTranslation`](https://react.i18next.com/latest/usetranslation-hook) so you can use
 
