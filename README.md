@@ -40,7 +40,7 @@ plugins: [
     resolve: `gatsby-plugin-react-i18next`,
     options: {
       path: `${__dirname}/locales`,
-      languages: ['en', 'es', 'de'],
+      languages: [`en`, `es`, `de`],
       defaultLanguage: `en`,
 
       // you can pass any i18next options
@@ -188,7 +188,7 @@ const Header = ({siteTitle}) => {
 | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | path            | string   | path to the folder with JSON translations                                                                                                                                                                        |
 | languages       | string[] | supported language keys                                                                                                                                                                                          |
-| defaultLanguage | string   | default language when visiting `/page` instead of `es/page`                                                                                                                                                      |
+| defaultLanguage | string   | default language when visiting `/page` instead of `/es/page`                                                                                                                                                     |
 | redirect        | boolean  | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/es` or `/es/page-2`. Otherwise, the pages will render `defaultLangugage` language. Default is `true` |
 | i18nextOptions  | object   | [i18next configuration options](https://www.i18next.com/overview/configuration-options)                                                                                                                          |
 
