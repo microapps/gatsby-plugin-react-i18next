@@ -225,6 +225,7 @@ Content of the context object
 | routed          | boolean  | if `false` it means that the page is in default language |
 | defaultLanguage | string   | default language provided in plugin options              |
 | originalPath    | string   | page path in default language                            |
+| path            | string   | page path                                                |
 
 The same context will be also available in the Gatsby `pageContext.i18n` object
 
@@ -250,7 +251,7 @@ You can use [babel-plugin-i18next-extract](https://i18next-extract.netlify.app) 
 1. Install
 
 ```
-yarn add @babel/cli babel-plugin-i18next-extract -D
+yarn add @babel/cli @babel/plugin-transform-typescript babel-plugin-i18next-extract -D
 ```
 
 2. create `babel-extract.config.js` file (don't name it `babel.config.js`, or it will be used by gatsby)
@@ -271,6 +272,12 @@ module.exports = {
         customTransComponents: [['gatsby-plugin-react-i18next', 'Trans']]
       }
     ]
+  ],
+  overrides: [
+    {
+      test: [`**/*.ts`, `**/*.tsx`],
+      plugins: [[`@babel/plugin-transform-typescript`, {isTSX: true}]]
+    }
   ]
 };
 ```
@@ -280,7 +287,7 @@ module.exports = {
 ```json
 {
   "scripts": {
-    "extract": "yarn run babel -f babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
+    "extract": "yarn run babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   }
 }
 ```

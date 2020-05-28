@@ -76,7 +76,14 @@ export const wrapPageElement = (
     i18n.changeLanguage(language);
   }
 
-  const context = {routed, language, languages, originalPath, defaultLanguage};
+  const context = {
+    routed,
+    language,
+    languages,
+    originalPath,
+    defaultLanguage,
+    path: props.path
+  };
 
   return withI18next(i18n, context)(element);
 };

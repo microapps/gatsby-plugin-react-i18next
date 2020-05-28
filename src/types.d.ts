@@ -16,6 +16,7 @@ export type I18NextContext = {
   languages: string[];
   defaultLanguage: string;
   originalPath: string;
+  path: string;
 };
 
 export type PageContext = {
