@@ -24,7 +24,15 @@ export const wrapPageElement = (
 ) => {
   if (!props) return;
   const {pageContext, location} = props;
-  const {routed, language, languages, originalPath, defaultLanguage, resources} = pageContext.i18n;
+  const {
+    routed,
+    language,
+    languages,
+    originalPath,
+    defaultLanguage,
+    resources,
+    path
+  } = pageContext.i18n;
   const isRedirect = redirect && !routed;
 
   if (isRedirect) {
@@ -82,7 +90,7 @@ export const wrapPageElement = (
     languages,
     originalPath,
     defaultLanguage,
-    path: props.path
+    path
   };
 
   return withI18next(i18n, context)(element);

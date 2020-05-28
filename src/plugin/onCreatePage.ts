@@ -48,7 +48,8 @@ export const onCreatePage = async (
           defaultLanguage,
           routed,
           resources,
-          originalPath: page.path
+          originalPath: page.path,
+          path: newPath
         }
       }
     };
