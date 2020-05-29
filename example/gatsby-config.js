@@ -37,6 +37,7 @@ module.exports = {
         languages,
         defaultLanguage,
         path: `${__dirname}/locales`,
+        siteUrl: 'https://5ecd0801489011000849a7db--kind-lichterman-5edcb4.netlify.app',
         i18nextOptions: {
           debug: true,
           lowerCaseLng: true,

@@ -3,7 +3,7 @@
   "version": "0.0.9",
   "description": "Easily translate your Gatsby website into multiple languages",
   "main": "index.js",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "author": "Dmitriy Nevzorov",
   "license": "MIT",
   "keywords": [
