@@ -5773,10 +5773,10 @@ gatsby-plugin-react-helmet@^3.3.1:
   dependencies:
     "@babel/runtime" "^7.9.6"
 
-gatsby-plugin-react-i18next@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-i18next/-/gatsby-plugin-react-i18next-0.0.11.tgz#aeb7fb62a47caa63f5113a3f64de10672a9c9660"
-  integrity sha512-2/Gh1ExugxSiRGjBrIAISgoubx6Z2d9wJxcOx99UjsXQGyFMU1YQTZ2cV5TCxcpgao2tkFyVAnegnNuaj/WtRA==
+gatsby-plugin-react-i18next@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-i18next/-/gatsby-plugin-react-i18next-0.0.12.tgz#2332a21ec9b7e98298197823cb3a7926c858c866"
+  integrity sha512-7x8YlGgu/9lHDTcbQfd5mnadFT39iMa92Z53VJdWPOebPNpR6u0S4SahptCqz4ofZU9Y/VeIFyVnaYrexpoeSw==
   dependencies:
     bluebird "^3.7.2"
     browser-lang "^0.1.0"
