@@ -28,13 +28,13 @@ This plugin does not require fetching translations with graphql query on each pa
 ### Install package
 
 ```
-yarn add gatsby-plugin-react-i18next
+yarn add gatsby-plugin-react-i18next i18next react-i18next
 ```
 
 or
 
 ```
-npm install --save gatsby-plugin-react-i18next
+npm install --save gatsby-plugin-react-i18next i18next react-i18next
 ```
 
 ### Configure the plugin
