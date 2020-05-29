@@ -224,7 +224,7 @@ const SpanishAboutLink = () => (
 
 `Helmet` component is identical to [`gatsby-plugin-react-helmet`](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet) component but also provides language related metatags (alternative and canonical links)
 
-**Note!** You need to provide `siteUrl` in plugin options for it to work properly
+**Note!** To use it you need to have `react-helmet` dependency installed. You also need to provide `siteUrl` in plugin options for it to work properly.
 
 ### `I18nextContext`
 
