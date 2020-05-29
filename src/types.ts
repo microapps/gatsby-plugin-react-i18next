@@ -1,5 +1,7 @@
 import {InitOptions} from 'i18next';
 
+export const LANGUAGE_KEY = 'gatsby-i18next-language';
+
 export type PluginOptions = {
   languages: string[];
   defaultLanguage: string;

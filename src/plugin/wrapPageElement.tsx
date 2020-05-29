@@ -1,9 +1,8 @@
 import React from 'react';
-import {I18NextContext, PageContext, PluginOptions} from '../types';
 import {withPrefix, WrapPageElementBrowserArgs} from 'gatsby';
 // @ts-ignore
 import browserLang from 'browser-lang';
-import {LANGUAGE_KEY} from '../const';
+import {I18NextContext, LANGUAGE_KEY, PageContext, PluginOptions} from '../types';
 import i18next, {i18n as I18n} from 'i18next';
 import {I18nextProvider} from 'react-i18next';
 import {I18nextContext} from '../i18nextContext';

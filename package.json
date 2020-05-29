@@ -15,7 +15,12 @@
     "i18next",
     "react-i18next",
     "gatsby-i18n",
-    "i18n"
+    "i18n",
+    "i18next",
+    "localization",
+    "localisation",
+    "translation",
+    "translate"
   ],
   "repository": {
     "url": "https://github.com/microapps/gatsby-plugin-react-i18next"
@@ -28,9 +33,9 @@
     "gatsby-ssr.js"
   ],
   "scripts": {
-    "build:ts": "babel src --out-dir dist --extensions .ts,.tsx --ignore **/*.d.ts",
+    "build:ts": "babel src --out-dir dist --extensions .ts,.tsx",
     "build:defs": "tsc --declaration --outDir dist --emitDeclarationOnly",
-    "dev": "babel -w src --out-dir dist --extensions .ts,.tsx --ignore **/*.d.ts",
+    "dev": "babel -w src --out-dir dist --extensions .ts,.tsx",
     "prepare": "NODE_ENV=production yarn run build:ts && yarn run build:defs",
     "format": "prettier --write '**/*.{js,jsx,json,ts,tsx,md}'",
     "release": "release-it"

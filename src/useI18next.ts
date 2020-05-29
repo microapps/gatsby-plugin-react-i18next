@@ -3,7 +3,7 @@ import {useContext} from 'react';
 import {navigate as gatsbyNavigate} from 'gatsby';
 import {I18nextContext} from './i18nextContext';
 import {NavigateOptions} from '@reach/router';
-import {LANGUAGE_KEY} from './const';
+import {LANGUAGE_KEY} from './types';
 
 declare var __BASE_PATH__: string | undefined;
 declare var __PATH_PREFIX__: string | undefined;

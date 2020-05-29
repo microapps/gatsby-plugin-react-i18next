@@ -1,9 +1,9 @@
 import _glob from 'glob';
 import {CreatePageArgs, Page} from 'gatsby';
 import BP from 'bluebird';
-import {PageContext, PluginOptions, Resources} from '../types';
 import fs from 'fs';
 import util from 'util';
+import {PageContext, PluginOptions, Resources} from '../types';
 
 const readFile = util.promisify(fs.readFile);
 const glob = util.promisify(_glob);
