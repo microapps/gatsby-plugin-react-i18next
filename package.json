@@ -28,6 +28,7 @@
   "files": [
     "dist",
     "index.js",
+    "index.d.ts",
     "gatsby-browser.js",
     "gatsby-node.js",
     "gatsby-ssr.js"
