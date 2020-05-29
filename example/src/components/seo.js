@@ -7,10 +7,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'gatsby-plugin-react-i18next';
 import {useStaticQuery, graphql} from 'gatsby';
 
-function SEO({description, lang, meta, title}) {
+function SEO({description, meta, title}) {
   const {site} = useStaticQuery(
     graphql`
       query {
@@ -29,9 +29,6 @@ function SEO({description, lang, meta, title}) {
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang
-      }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
@@ -73,7 +70,6 @@ function SEO({description, lang, meta, title}) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
   meta: [],
   description: ``
 };

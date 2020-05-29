@@ -5773,16 +5773,15 @@ gatsby-plugin-react-helmet@^3.3.1:
   dependencies:
     "@babel/runtime" "^7.9.6"
 
-gatsby-plugin-react-i18next@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-i18next/-/gatsby-plugin-react-i18next-0.0.6.tgz#04432845338a50633a22b1bec2a549b79389159e"
-  integrity sha512-TRJiZebcPKTu7Ua6GdGWQobWFR2RAYn8/ulfsng5Ll7GTxMrvRez3UlEAJcaIr44nTR7nccCd1oKfeHUpmD/ng==
+gatsby-plugin-react-i18next@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-i18next/-/gatsby-plugin-react-i18next-0.0.11.tgz#aeb7fb62a47caa63f5113a3f64de10672a9c9660"
+  integrity sha512-2/Gh1ExugxSiRGjBrIAISgoubx6Z2d9wJxcOx99UjsXQGyFMU1YQTZ2cV5TCxcpgao2tkFyVAnegnNuaj/WtRA==
   dependencies:
     bluebird "^3.7.2"
     browser-lang "^0.1.0"
     glob "^7.1.6"
-    i18next "^19.4.4"
-    react-i18next "^11.5.0"
+    react-helmet "^6.0.0"
 
 gatsby-plugin-sharp@^2.6.4:
   version "2.6.9"
@@ -6872,7 +6871,7 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
-i18next@^19.0.0, i18next@^19.4.4:
+i18next@^19.0.0, i18next@^19.4.5:
   version "19.4.5"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-19.4.5.tgz#f9ea8bbb48d1ec66bc3436f0bb74a16b11821e11"
   integrity sha512-aLvSsURoupi3x9IndmV6+m3IGhzLzhYv7Gw+//K3ovdliyGcFRV0I1MuddI0Bk/zR7BG1U+kJOjeHFUcUIdEgg==
