@@ -23,6 +23,11 @@ This plugin does not require fetching translations with graphql query on each pa
 - [View demo online](https://5ecd0801489011000849a7db--kind-lichterman-5edcb4.netlify.app/)
 - [Source code](/example)
 
+## Used by
+
+- [monei.net](https://monei.net/)
+- [moonmail.io](https://moonmail.io/)
+
 ## How to use
 
 ### Install package
