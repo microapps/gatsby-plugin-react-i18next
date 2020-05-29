@@ -41,11 +41,12 @@
     "release": "release-it"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
+    "@babel/cli": "^7.10.1",
     "@types/bluebird": "^3.5.32",
     "@types/react": "^16.9.35",
+    "@types/react-helmet": "^6.0.0",
     "babel-preset-gatsby-package": "^0.4.2",
-    "gatsby": "^2.22.9",
+    "gatsby": "^2.22.12",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
@@ -56,12 +57,13 @@
     "bluebird": "^3.7.2",
     "browser-lang": "^0.1.0",
     "glob": "^7.1.6",
-    "i18next": "^19.4.4",
-    "react-i18next": "^11.5.0"
+    "react-helmet": "^6.0.0"
   },
   "peerDependencies": {
     "gatsby": "^2.2.0",
-    "react": "^16.12.0"
+    "react": "^16.12.0",
+    "i18next": "^19.4.5",
+    "react-i18next": "^11.5.0"
   },
   "husky": {
     "hooks": {

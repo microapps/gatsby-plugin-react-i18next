@@ -4,13 +4,19 @@ Easily translate your Gatsby website into multiple languages.
 
 ## Features
 
-- Seamless integration with [react-i18next](https://react.i18next.com/) - a powerful internationalization framework for React
+- Seamless integration with [react-i18next](https://react.i18next.com/) - a powerful internationalization framework for React.
+- No extra graphql queries to fetch translations, everything is done automatically.
 - Automatic redirection based on the user's preferred language in browser provided by [browser-lang](https://github.com/wiziple/browser-lang).
-- Support multi-language url routes in a single page component. This means you don't have to create separate pages such as `pages/en/index.js` or `pages/es/index.js`.
+- Support multi-language url routes in a single page component. You don't have to create separate pages such as `pages/en/index.js` or `pages/es/index.js`.
+- Support for [gatsby-plugin-layout](https://www.gatsbyjs.org/packages/gatsby-plugin-layout/)
 
 ## Why?
 
 When you build multilingual sites, Google recommends using different URLs for each language version of a page rather than using cookies or browser settings to adjust the content language on the page. [(read more)](https://support.google.com/webmasters/answer/182192?hl=en&ref_topic=2370587)
+
+## How is it different from other gatsby i18next plugins?
+
+This plugin does not require fetching translations with graphql query on each page, everything is done automatically. Just use `react-i18next` to translate your pages.
 
 ## Demo
 
@@ -190,6 +196,7 @@ const Header = ({siteTitle}) => {
 | languages       | string[] | supported language keys                                                                                                                                                                                          |
 | defaultLanguage | string   | default language when visiting `/page` instead of `/es/page`                                                                                                                                                     |
 | redirect        | boolean  | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/es` or `/es/page-2`. Otherwise, the pages will render `defaultLangugage` language. Default is `true` |
+| siteUrl         | string   | public site url, is used to generate language specific meta tags                                                                                                                                                 |
 | i18nextOptions  | object   | [i18next configuration options](https://www.i18next.com/overview/configuration-options)                                                                                                                          |
 
 ## Plugin API
@@ -207,6 +214,12 @@ const SpanishAboutLink = () => (
   </Link>
 );
 ```
+
+### `Helmet`
+
+`Helmet` component is identical to [`gatsby-plugin-react-helmet`](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet) component but also provides language related metatags (alternative and canonical links)
+
+**Note!** You need to provide `siteUrl` in plugin options for it to work properly
 
 ### `I18nextContext`
 
@@ -226,6 +239,7 @@ Content of the context object
 | defaultLanguage | string   | default language provided in plugin options              |
 | originalPath    | string   | page path in default language                            |
 | path            | string   | page path                                                |
+| siteUrl         | string   | public site url provided in plugin options               |
 
 The same context will be also available in the Gatsby `pageContext.i18n` object
 

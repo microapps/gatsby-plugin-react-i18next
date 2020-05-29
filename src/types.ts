@@ -7,6 +7,7 @@ export type PluginOptions = {
   defaultLanguage: string;
   path: string;
   redirect: boolean;
+  siteUrl?: string;
   i18nextOptions: InitOptions;
 };
 
@@ -19,6 +20,7 @@ export type I18NextContext = {
   defaultLanguage: string;
   originalPath: string;
   path: string;
+  siteUrl?: string;
 };
 
 export type PageContext = {

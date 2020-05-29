@@ -19,7 +19,7 @@ const withI18next = (i18n: I18n, context: I18NextContext) => (children: any) => 
 
 export const wrapPageElement = (
   {element, props}: WrapPageElementBrowserArgs<any, PageContext>,
-  {i18nextOptions = {}, redirect = true}: PluginOptions
+  {i18nextOptions = {}, redirect = true, siteUrl}: PluginOptions
 ) => {
   if (!props) return;
   const {pageContext, location} = props;
@@ -89,6 +89,7 @@ export const wrapPageElement = (
     languages,
     originalPath,
     defaultLanguage,
+    siteUrl,
     path
   };
 
