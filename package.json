@@ -51,7 +51,9 @@
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "release-it": "^13.6.1",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "i18next": "^19.4.5",
+    "react-i18next": "^11.5.0"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
