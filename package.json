@@ -85,7 +85,8 @@
     },
     "hooks": {
       "before:init": [
-        "yarn run format"
+        "yarn run format",
+        "yarn run prepare"
       ]
     }
   }
