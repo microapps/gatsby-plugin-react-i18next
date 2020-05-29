@@ -80,7 +80,9 @@ export const wrapPageElement = (
   });
 
   if (i18n.language !== language) {
-    i18n.changeLanguage(language);
+    setTimeout(() => {
+      i18n.changeLanguage(language);
+    });
   }
 
   const context = {
