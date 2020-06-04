@@ -14,8 +14,8 @@ export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
 
   const {routed, defaultLanguage} = context;
 
-  const getUrlLanguage = (language: string) => {
-    return language !== defaultLanguage ? language : '';
+  const getLanguagePath = (language: string) => {
+    return language !== defaultLanguage ? `/${language}` : '';
   };
 
   const removePrefix = (pathname: string) => {
@@ -33,15 +33,15 @@ export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
   };
 
   const navigate = (to: string, options?: NavigateOptions<{}>) => {
-    const urlLanguage = getUrlLanguage(context.language);
-    const link = routed ? `/${urlLanguage}${to}` : `${to}`;
+    const languagePath = getLanguagePath(context.language);
+    const link = routed ? `${languagePath}${to}` : `${to}`;
     return gatsbyNavigate(link, options);
   };
 
   const changeLanguage = (language: string, to?: string, options?: NavigateOptions<{}>) => {
-    const urlLanguage = getUrlLanguage(language);
+    const languagePath = getLanguagePath(language);
     const pathname = to || removeLocalePart(removePrefix(window.location.pathname));
-    const link = `/${urlLanguage}${pathname}${window.location.search}`;
+    const link = `${languagePath}${pathname}${window.location.search}`;
     localStorage.setItem(LANGUAGE_KEY, language);
     return gatsbyNavigate(link, options);
   };
