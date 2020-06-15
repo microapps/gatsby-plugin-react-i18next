@@ -56,7 +56,9 @@ export const onCreatePage = async (
   };
 
   const newPage = await generatePage(defaultLanguage);
-  deletePage(page);
+  try {
+    deletePage(page);
+  } catch {}
   createPage(newPage);
 
   await BP.map(languages, async (lng) => {
