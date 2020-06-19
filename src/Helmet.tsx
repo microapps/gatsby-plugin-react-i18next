@@ -7,7 +7,7 @@ export const Helmet: React.FC<HelmetProps> = ({children, ...props}) => {
   return (
     <ReactHelmet {...props}>
       <html lang={language} />
-      <link rel="canonical" href={`${siteUrl}${originalPath}`} />
+      <link rel="canonical" href={`${siteUrl}/${language}${originalPath}`} />
       {languages.map((lang) => (
         <link
           rel="alternate"
