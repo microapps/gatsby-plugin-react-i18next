@@ -42,6 +42,7 @@ export const onCreatePage = async (
       path: newPath,
       context: {
         ...page.context,
+        language,
         i18n: {
           language,
           languages,
