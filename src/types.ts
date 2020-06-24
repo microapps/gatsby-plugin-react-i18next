@@ -25,5 +25,6 @@ export type I18NextContext = {
 
 export type PageContext = {
   path: string;
+  language: string;
   i18n: I18NextContext & {resources: Resources};
 };
