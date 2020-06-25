@@ -42,19 +42,19 @@
     "release": "release-it"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
+    "@babel/cli": "^7.10.3",
     "@types/bluebird": "^3.5.32",
-    "@types/react": "^16.9.35",
-    "babel-preset-gatsby-package": "^0.4.2",
-    "gatsby": "^2.22.12",
+    "@types/react": "^16.9.41",
+    "@types/react-helmet": "^6.0.0",
+    "babel-preset-gatsby-package": "^0.4.6",
+    "gatsby": "^2.23.11",
     "husky": "^4.2.5",
+    "i18next": "^19.5.1",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
-    "release-it": "^13.6.1",
-    "typescript": "^3.9.3",
-    "i18next": "^19.4.5",
-    "react-i18next": "^11.5.0",
-    "@types/react-helmet": "^6.0.0"
+    "react-i18next": "^11.7.0",
+    "release-it": "^13.6.3",
+    "typescript": "^3.9.5"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
@@ -63,12 +63,12 @@
   },
   "peerDependencies": {
     "gatsby": "^2.2.0",
-    "react": "^16.12.0",
     "i18next": "^19.4.5",
+    "react": "^16.12.0",
     "react-i18next": "^11.5.0"
   },
   "optionalDependencies": {
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.1.0"
   },
   "husky": {
     "hooks": {
