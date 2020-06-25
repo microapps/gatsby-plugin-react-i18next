@@ -4,8 +4,9 @@ import {useI18next} from './useI18next';
 
 export const Helmet: React.FC<HelmetProps> = ({children, ...props}) => {
   const {languages, language, originalPath, defaultLanguage, siteUrl = ''} = useI18next();
-  const createUrlWithLang = (lang: string) =>
-    `${siteUrl}${lang === defaultLanguage ? '' : `/${lang}`}${originalPath}`;
+  const createUrlWithLang = (lang: string) => {
+    return `${siteUrl}${lang === defaultLanguage ? '' : `/${lang}`}${originalPath}`;
+  };
   return (
     <ReactHelmet {...props}>
       <html lang={language} />
