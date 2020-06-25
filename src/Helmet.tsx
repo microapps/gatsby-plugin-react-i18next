@@ -11,11 +11,11 @@ export const Helmet: React.FC<HelmetProps> = ({children, ...props}) => {
     <ReactHelmet {...props}>
       <html lang={language} />
       <link rel="canonical" href={createUrlWithLang(language)} />
-      {languages
-        .filter((lng) => lng !== language)
-        .map((lng) => (
-          <link rel="alternate" key={lng} href={createUrlWithLang(lng)} hrefLang={lng} />
-        ))}
+      {languages.map((lng) => (
+        <link rel="alternate" key={lng} href={createUrlWithLang(lng)} hrefLang={lng} />
+      ))}
+      {/* adding a fallback page for unmatched languages */}
+      <link rel="alternate" href={createUrlWithLang(defaultLanguage)} hrefLang="x-default" />
       {children}
     </ReactHelmet>
   );
