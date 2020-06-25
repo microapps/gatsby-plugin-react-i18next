@@ -4,16 +4,18 @@ import {useI18next} from './useI18next';
 
 export const Helmet: React.FC<HelmetProps> = ({children, ...props}) => {
   const {languages, language, originalPath, defaultLanguage, siteUrl = ''} = useI18next();
-  const createUrlWithLang = (lang: string) => {
-    return `${siteUrl}${lang === defaultLanguage ? '' : `/${lang}`}${originalPath}`;
+  const createUrlWithLang = (lng: string) => {
+    return `${siteUrl}${lng === defaultLanguage ? '' : `/${lng}`}${originalPath}`;
   };
   return (
     <ReactHelmet {...props}>
       <html lang={language} />
       <link rel="canonical" href={createUrlWithLang(language)} />
-      {languages.map((lang) => (
-        <link rel="alternate" key={lang} href={createUrlWithLang(lang)} hrefLang={lang} />
-      ))}
+      {languages
+        .filter((lng) => lng !== language)
+        .map((lng) => (
+          <link rel="alternate" key={lng} href={createUrlWithLang(lng)} hrefLang={lng} />
+        ))}
       {children}
     </ReactHelmet>
   );

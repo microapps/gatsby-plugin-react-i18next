@@ -63,6 +63,7 @@ export const onCreatePage = async (
   createPage(newPage);
 
   await BP.map(languages, async (lng) => {
+    if (lng === defaultLanguage) return;
     const localePage = await generatePage(lng, true);
     const regexp = new RegExp('/404/?$');
     if (regexp.test(localePage.path)) {
