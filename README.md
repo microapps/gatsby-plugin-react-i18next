@@ -21,7 +21,7 @@ This plugin does not require fetching translations with graphql query on each pa
 
 ## Demo
 
-- [View demo online](https://5ecd0801489011000849a7db--kind-lichterman-5edcb4.netlify.app/)
+- [View demo online](https://kind-lichterman-5edcb4.netlify.app/)
 - [Source code](/example)
 
 ## Used by
