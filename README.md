@@ -8,6 +8,7 @@ Easily translate your Gatsby website into multiple languages.
 - No extra graphql queries to fetch translations, everything is done automatically.
 - Automatic redirection based on the user's preferred language in browser provided by [browser-lang](https://github.com/wiziple/browser-lang).
 - Support multi-language url routes in a single page component. You don't have to create separate pages such as `pages/en/index.js` or `pages/es/index.js`.
+- SEO friendly
 - Support for [gatsby-plugin-layout](https://www.gatsbyjs.org/packages/gatsby-plugin-layout/)
 
 ## Why?
@@ -261,6 +262,20 @@ This react hook returns `I18nextContext`, object and additional helper functions
 
 ```javascript
 const {t} = useI18next();
+```
+
+## How to fetch language specific data
+
+You can use `language` variable in gatsby page queries to fetch additional data for each language. For example if you're using [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/) your query might look like:
+
+```typescript
+export const query = graphql`
+  query($language: String!) {
+    dataJson(language: {eq: $language}) {
+      ...DataFragment
+    }
+  }
+`;
 ```
 
 ## How to extract translations from pages
