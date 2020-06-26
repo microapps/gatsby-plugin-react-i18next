@@ -278,6 +278,66 @@ export const query = graphql`
 `;
 ```
 
+## How to add `sitemap.xml` for all language specific pages
+
+You can use [gatsby-plugin-sitemap](https://www.gatsbyjs.org/packages/gatsby-plugin-sitemap/) to automatically generate a sitemap during build time. You need to customize `query` to fetch only original pages and then `serialize` data to build a sitemap. Here is an example:
+
+```javascript
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: 'gatsby-plugin-sitemap',
+    options: {
+      exclude: ['/**/404', '/**/404.html', '/**/preview', '/**/preview/post'],
+      query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage(filter: {context: {i18n: {routed: {eq: false}}}}) {
+              edges {
+                node {
+                  context {
+                    i18n {
+                      defaultLanguage
+                      languages
+                      originalPath
+                    }
+                  }
+                  path
+                }
+              }
+            }
+          }
+        `,
+      serialize: ({site, allSitePage}) => {
+        return allSitePage.edges.map((edge) => {
+          const {languages, originalPath, defaultLanguage} = edge.node.context.i18n;
+          const {siteUrl} = site.siteMetadata;
+          const url = siteUrl + originalPath;
+          const links = [
+            {lang: defaultLanguage, url},
+            {lang: 'x-default', url}
+          ];
+          languages.forEach((lang) => {
+            if (lang === defaultLanguage) return;
+            links.push({lang, url: `${siteUrl}/${lang}${originalPath}`});
+          });
+          return {
+            url,
+            changefreq: 'daily',
+            priority: originalPath === '/' ? 1.0 : 0.7,
+            links
+          };
+        });
+      }
+    }
+  }
+];
+```
+
 ## How to extract translations from pages
 
 You can use [babel-plugin-i18next-extract](https://i18next-extract.netlify.app) automatically extract translations inside `t` function and `Trans` component from you pages and save them in JSON.
