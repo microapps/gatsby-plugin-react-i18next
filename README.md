@@ -265,7 +265,7 @@ const SpanishAboutLink = () => (
 
 Use this react context to access language information about the page
 
-```
+```javascript
 const context = React.useContext(I18nextContext);
 ```
 
@@ -302,7 +302,7 @@ const {t} = useI18next();
 
 You can use `language` variable in gatsby page queries to fetch additional data for each language. For example if you're using [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/) your query might look like:
 
-```typescript
+```javascript
 export const query = graphql`
   query($language: String!) {
     dataJson(language: {eq: $language}) {
