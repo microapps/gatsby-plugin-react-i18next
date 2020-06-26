@@ -158,7 +158,6 @@ This example is not using semantic keys instead the entire message will be used 
 
 ```javascript
 import {Link, useI18next} from 'gatsby-plugin-react-i18next';
-import './header.css';
 import React from 'react';
 
 const Header = ({siteTitle}) => {
@@ -186,6 +185,41 @@ const Header = ({siteTitle}) => {
               }}>
               {lng}
             </a>
+          </li>
+        ))}
+      </ul>
+    </header>
+  );
+};
+```
+
+Or a more SEO friendly version using `Link` component
+
+```javascript
+import {Link, useI18next} from 'gatsby-plugin-react-i18next';
+import PropTypes from 'prop-types';
+import React from 'react';
+
+const Header = ({siteTitle}) => {
+  const {languages, originalPath} = useI18next();
+  return (
+    <header className="main-header">
+      <h1 style={{margin: 0}}>
+        <Link
+          to="/"
+          style={{
+            color: `white`,
+            textDecoration: `none`
+          }}>
+          {siteTitle}
+        </Link>
+      </h1>
+      <ul className="languages">
+        {languages.map((lng) => (
+          <li key={lng}>
+            <Link to={originalPath} language={lng}>
+              {lng}
+            </Link>
           </li>
         ))}
       </ul>
