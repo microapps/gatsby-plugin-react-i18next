@@ -4,7 +4,7 @@ import './header.css';
 import React from 'react';
 
 const Header = ({siteTitle}) => {
-  const {languages, changeLanguage} = useI18next();
+  const {languages, originalPath} = useI18next();
   return (
     <header className="main-header">
       <h1 style={{margin: 0}}>
@@ -20,14 +20,9 @@ const Header = ({siteTitle}) => {
       <ul className="languages">
         {languages.map((lng) => (
           <li key={lng}>
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                changeLanguage(lng);
-              }}>
+            <Link to={originalPath} language={lng}>
               {lng}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
