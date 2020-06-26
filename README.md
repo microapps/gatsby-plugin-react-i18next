@@ -322,7 +322,7 @@ plugins: [
   {
     resolve: 'gatsby-plugin-sitemap',
     options: {
-      exclude: ['/**/404', '/**/404.html', '/**/preview', '/**/preview/post'],
+      exclude: ['/**/404', '/**/404.html'],
       query: `
           {
             site {
