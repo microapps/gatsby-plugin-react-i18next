@@ -3,7 +3,8 @@ import {CreatePageArgs, Page} from 'gatsby';
 import BP from 'bluebird';
 import fs from 'fs';
 import util from 'util';
-import {PageContext, PluginOptions, Resources} from '../types';
+import {match} from 'path-to-regexp';
+import {PageContext, PageOptions, PluginOptions, Resources} from '../types';
 
 const readFile = util.promisify(fs.readFile);
 const glob = util.promisify(_glob);
@@ -32,39 +33,82 @@ export const onCreatePage = async (
   }
 
   const {createPage, deletePage} = actions;
-  const {defaultLanguage = 'en', languages = ['en'], path} = pluginOptions;
+  const {defaultLanguage = 'en', languages = ['en'], pages = []} = pluginOptions;
 
-  const generatePage = async (language: string, routed = false): Promise<Page<PageContext>> => {
-    const resources = await getResources(path, language);
-    const newPath = routed ? `${language}${page.path}` : page.path;
+  type GeneratePageParams = {
+    language: string;
+    path?: string;
+    originalPath?: string;
+    routed?: boolean;
+    pageOptions?: PageOptions;
+  };
+  const generatePage = async ({
+    language,
+    path = page.path,
+    originalPath = page.path,
+    routed = false,
+    pageOptions
+  }: GeneratePageParams): Promise<Page<PageContext>> => {
+    const resources = await getResources(pluginOptions.path, language);
     return {
       ...page,
-      path: newPath,
+      path,
       context: {
         ...page.context,
         language,
         i18n: {
           language,
-          languages,
+          languages: pageOptions?.languages || languages,
           defaultLanguage,
           routed,
           resources,
-          originalPath: page.path,
-          path: newPath
+          originalPath,
+          path
         }
       }
     };
   };
 
-  const newPage = await generatePage(defaultLanguage);
+  const pageOptions = pages.find((opt) => match(opt.matchPath)(page.path));
+
+  let newPage;
+  let alternativeLanguages = languages.filter((lng) => lng !== defaultLanguage);
+
+  if (pageOptions?.excludeLanguages) {
+    alternativeLanguages = alternativeLanguages.filter(
+      (lng) => !pageOptions?.excludeLanguages?.includes(lng)
+    );
+  }
+
+  if (pageOptions?.languages) {
+    alternativeLanguages = pageOptions.languages.filter((lng) => lng !== defaultLanguage);
+  }
+
+  if (pageOptions?.getLanguageFromPath) {
+    const result = match<{lang: string}>(pageOptions.matchPath)(page.path);
+    if (!result) return;
+    const language = result.params.lang || defaultLanguage;
+    const originalPath = page.path.replace(`/${language}`, '');
+    const routed = Boolean(result.params.lang);
+    newPage = await generatePage({language, originalPath, routed, pageOptions});
+    if (routed || !pageOptions.excludeLanguages) {
+      alternativeLanguages = [];
+    }
+  } else {
+    newPage = await generatePage({language: defaultLanguage, pageOptions});
+  }
+
   try {
     deletePage(page);
   } catch {}
   createPage(newPage);
 
-  await BP.map(languages, async (lng) => {
-    if (lng === defaultLanguage) return;
-    const localePage = await generatePage(lng, true);
+  await BP.map(alternativeLanguages, async (lng) => {
+    const localePage = await generatePage({
+      language: lng,
+      path: `${lng}${page.path}`,
+      routed: true
+    });
     const regexp = new RegExp('/404/?$');
     if (regexp.test(localePage.path)) {
       localePage.matchPath = `/${lng}/*`;

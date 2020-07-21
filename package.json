@@ -33,6 +33,10 @@
     "gatsby-node.js",
     "gatsby-ssr.js"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build:ts": "babel src --out-dir dist --extensions .ts,.tsx",
     "build:defs": "tsc --declaration --outDir dist --emitDeclarationOnly",
@@ -47,11 +51,13 @@
     "@types/react": "^16.9.43",
     "@types/react-helmet": "^6.0.0",
     "babel-preset-gatsby-package": "^0.4.6",
-    "gatsby": "^2.24.3",
+    "gatsby": "^2.24.8",
     "husky": "^4.2.5",
     "i18next": "^19.6.2",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-i18next": "^11.7.0",
     "release-it": "^13.6.5",
     "typescript": "^3.9.7"
@@ -59,7 +65,8 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "browser-lang": "^0.1.0",
-    "glob": "^7.1.6"
+    "glob": "^7.1.6",
+    "path-to-regexp": "^6.1.0"
   },
   "peerDependencies": {
     "gatsby": "^2.2.0",
@@ -84,7 +91,7 @@
       "release": true
     },
     "npm": {
-      "publish": false
+      "publish": true
     },
     "hooks": {
       "before:init": [

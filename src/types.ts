@@ -2,6 +2,13 @@ import {InitOptions} from 'i18next';
 
 export const LANGUAGE_KEY = 'gatsby-i18next-language';
 
+export type PageOptions = {
+  matchPath: string;
+  getLanguageFromPath?: boolean;
+  excludeLanguages?: string[];
+  languages?: string[];
+};
+
 export type PluginOptions = {
   languages: string[];
   defaultLanguage: string;
@@ -9,6 +16,7 @@ export type PluginOptions = {
   redirect: boolean;
   siteUrl?: string;
   i18nextOptions: InitOptions;
+  pages: Array<PageOptions>;
 };
 
 export type Resources = Record<string, Record<string, Record<string, string>>>;
