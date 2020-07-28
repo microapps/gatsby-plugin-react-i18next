@@ -63,7 +63,18 @@ plugins: [
         },
         keySeparator: false,
         nsSeparator: false
-      }
+      },
+      pages: [
+        {
+          matchPath: '/:lang?/blog/:uid',
+          getLanguageFromPath: true,
+          excludeLanguages: ['es']
+        },
+        {
+          matchPath: '/preview',
+          languages: ['en']
+        }
+      ]
     }
   }
 ];
@@ -237,7 +248,17 @@ const Header = ({siteTitle}) => {
 | defaultLanguage | string   | default language when visiting `/page` instead of `/es/page`                                                                                                                                                     |
 | redirect        | boolean  | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/es` or `/es/page-2`. Otherwise, the pages will render `defaultLangugage` language. Default is `true` |
 | siteUrl         | string   | public site url, is used to generate language specific meta tags                                                                                                                                                 |
+| pages           | array    | an array of [page option](#page-options) used to modify plugin behaviour for specific pages                                                                                                                      |
 | i18nextOptions  | object   | [i18next configuration options](https://www.i18next.com/overview/configuration-options)                                                                                                                          |
+
+## Page options
+
+| Option              | Type    | Description                                                                                                                                                                                      |
+| ------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| matchPath           | string  | a path pattern like `/:lang?/blog/:uid`, check [path-to-regexp](https://github.com/pillarjs/path-to-regexp) for more info                                                                        |
+| getLanguageFromPath | boolean | if set to `true` the language will be taken from the `:lang` param in the path instead of automatically generating a new page for each language                                                  |
+| excludeLanguages    | array   | an array of languages to exclude, if specified the plugin will not automatically generate pages for those languages, this option can be used to replace pages in some languages with custom ones |
+| languages           | array   | an array of languages, if specified the plugin will automatically generate pages only for those languages                                                                                        |
 
 ## Plugin API
 
@@ -296,6 +317,42 @@ This react hook returns `I18nextContext`, object and additional helper functions
 
 ```javascript
 const {t} = useI18next();
+```
+
+## How to exclude pages that already have language key in path
+
+For example if you have some other plugin or script that generates your blog posts from headless CRM like [prismic.io](https://prismic.io/) in different languages you would like to exclude those pages, to not generate duplicates for each language key. You can do that by providing `pages` option.
+
+```js
+pages: [
+  {
+    matchPath: '/:lang?/blog/:uid',
+    getLanguageFromPath: true,
+    excludeLanguages: ['es']
+  }
+];
+```
+
+You have to specify a `:lang` url param, so the plugin knows what part of the path should be treated as language key.
+In this example the plugin will automatically generate language pages for all languages except `es`. Assuming that you have `['en', 'es', 'de']` languages te blog post with the path `/blog/hello-world` you will have the following pages generated:
+
+- `/blog/hello-world` - the English version (if you have `en` as a `defaultLanguage`)
+- `/es/blog/hello-world` - the Spanish version that should exist before you run the plugin (created manually or at build time with a plugin or api call)
+- `/de/blog/hello-world` - the German version that is generated automatically
+
+Omit `excludeLanguages` to get all the languages form the path. Make sure that you have pages for all the languages that you specify in the plugin, otherwise you might have broken links.
+
+## How to exclude a page that should not be translated
+
+You can limit the languages used to generate versions of a specific page, for exmaple to limit `/preview` page to only English version:
+
+```js
+pages: [
+  {
+    matchPath: '/preview',
+    languages: ['en']
+  }
+];
 ```
 
 ## How to fetch language specific data
