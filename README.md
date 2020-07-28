@@ -27,7 +27,7 @@ This plugin does not require fetching translations with graphql query on each pa
 ## Used by
 
 - [monei.net](https://monei.net/) - The digital payment gateway with best rates.
-- [moonmail.io](https://moonmail.io/)- OmniChannel Communication Platform used by more than 100,000 businesses worldwide.
+- [moonmail.io](https://moonmail.io/) - OmniChannel Communication Platform used by more than 100,000 businesses worldwide.
 
 ## How to use
 
