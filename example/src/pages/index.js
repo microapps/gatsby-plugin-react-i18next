@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
+import {Link as GatsbyLink} from 'gatsby';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
@@ -21,9 +22,16 @@ const IndexPage = () => {
       <div style={{maxWidth: `300px`, marginBottom: `1.45rem`}}>
         <Image />
       </div>
-      <Link to="/page-2/">
-        <Trans>Go to page 2</Trans>
-      </Link>
+      <p>
+        <Link to="/page-2/">
+          <Trans>Go to page 2</Trans>
+        </Link>
+      </p>
+      <p>
+        <GatsbyLink to="/ignored-page">
+          <Trans>Go to ignored page</Trans>
+        </GatsbyLink>
+      </p>
     </Layout>
   );
 };

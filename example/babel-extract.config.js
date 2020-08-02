@@ -1,5 +1,7 @@
 const {defaultLanguage} = require('./languages');
 
+process.env.NODE_ENV = 'test';
+
 module.exports = {
   presets: ['babel-preset-gatsby'],
   plugins: [
