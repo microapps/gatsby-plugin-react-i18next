@@ -28,6 +28,7 @@ This plugin does not require fetching translations with graphql query on each pa
 
 - [monei.net](https://monei.net/) - The digital payment gateway with best rates.
 - [moonmail.io](https://moonmail.io/) - OmniChannel Communication Platform used by more than 100,000 businesses worldwide.
+- [nyxo.app](https://nyxo.app) – Sleep tracking and coaching [(source code)](https://github.com/hello-nyxo/nyxo-website)
 
 ## How to use
 
