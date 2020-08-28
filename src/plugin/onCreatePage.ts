@@ -87,7 +87,7 @@ export const onCreatePage = async (
   if (pageOptions?.getLanguageFromPath) {
     const result = match<{lang: string}>(pageOptions.matchPath)(page.path);
     if (!result) return;
-    const language = result.params.lang || defaultLanguage;
+    const language = languages.find((lng) => lng === result.params.lang) || defaultLanguage;
     const originalPath = page.path.replace(`/${language}`, '');
     const routed = Boolean(result.params.lang);
     newPage = await generatePage({language, originalPath, routed, pageOptions});
