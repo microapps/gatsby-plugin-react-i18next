@@ -54,7 +54,7 @@ export const wrapPageElement = (
 
       if (detected !== defaultLanguage) {
         const queryParams = search || '';
-        const newUrl = withPrefix(`/${detected}${location.pathname}${queryParams}`);
+        const newUrl = withPrefix(`/${detected}${location.pathname}${queryParams}${location.hash}`);
         window.location.replace(newUrl);
         return null;
       }
