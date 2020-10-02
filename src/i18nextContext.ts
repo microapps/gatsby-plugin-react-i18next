@@ -6,6 +6,7 @@ export const I18nextContext = React.createContext<I18NextContext>({
   languages: ['en'],
   routed: false,
   defaultLanguage: 'en',
+  generateDefaultLanguagePage: false,
   originalPath: '/',
   path: '/'
 });

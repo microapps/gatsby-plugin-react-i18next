@@ -33,7 +33,12 @@ export const onCreatePage = async (
   }
 
   const {createPage, deletePage} = actions;
-  const {defaultLanguage = 'en', languages = ['en'], pages = []} = pluginOptions;
+  const {
+    defaultLanguage = 'en',
+    generateDefaultLanguagePage = false,
+    languages = ['en'],
+    pages = []
+  } = pluginOptions;
 
   type GeneratePageParams = {
     language: string;
@@ -60,6 +65,7 @@ export const onCreatePage = async (
           language,
           languages: pageOptions?.languages || languages,
           defaultLanguage,
+          generateDefaultLanguagePage,
           routed,
           resources,
           originalPath,
@@ -72,7 +78,9 @@ export const onCreatePage = async (
   const pageOptions = pages.find((opt) => match(opt.matchPath)(page.path));
 
   let newPage;
-  let alternativeLanguages = languages.filter((lng) => lng !== defaultLanguage);
+  let alternativeLanguages = generateDefaultLanguagePage
+    ? languages
+    : languages.filter((lng) => lng !== defaultLanguage);
 
   if (pageOptions?.excludeLanguages) {
     alternativeLanguages = alternativeLanguages.filter(
@@ -81,7 +89,9 @@ export const onCreatePage = async (
   }
 
   if (pageOptions?.languages) {
-    alternativeLanguages = pageOptions.languages.filter((lng) => lng !== defaultLanguage);
+    alternativeLanguages = generateDefaultLanguagePage
+      ? pageOptions.languages
+      : pageOptions.languages.filter((lng) => lng !== defaultLanguage);
   }
 
   if (pageOptions?.getLanguageFromPath) {
