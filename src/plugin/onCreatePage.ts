@@ -14,7 +14,7 @@ const getResources = async (path: string, language: string) => {
   return BP.reduce<string, Resources>(
     files,
     async (result, file) => {
-      const [, ns] = /[\/(\w+)]+\/(\w+)\.json/.exec(file)!;
+      const [, ns] = /[\/(\w+|\-)]+\/([\w|\-]+)\.json/.exec(file)!;
       const content = await readFile(file, 'utf8');
       result[language][ns] = JSON.parse(content);
       return result;
