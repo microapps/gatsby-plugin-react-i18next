@@ -80,7 +80,7 @@ export interface FileSystemNode extends Node {
 }
 
 export interface LocaleNodeInput extends NodeInput {
-  lng: string;
+  language: string;
   ns: string;
   data: string;
   fileAbsolutePath: string;

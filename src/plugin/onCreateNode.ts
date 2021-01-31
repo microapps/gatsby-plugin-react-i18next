@@ -50,7 +50,7 @@ export const onCreateNode = async (
   activity.start();
 
   // relativeDirectory name is language name.
-  const lang = relativeDirectory;
+  const language = relativeDirectory;
   const content = await loadNodeContent(node);
 
   // verify & canonicalize indent. (do not care about key order)
@@ -73,7 +73,7 @@ export const onCreateNode = async (
       contentDigest: createContentDigest(data),
       type: `Locale`
     },
-    lng: lang,
+    language: language,
     ns: name,
     data,
     fileAbsolutePath: absolutePath

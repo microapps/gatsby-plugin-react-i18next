@@ -66,9 +66,8 @@ export const wrapPageElement = (
 
   if (data && data[localeJsonNodeName]) {
     data[localeJsonNodeName].edges.forEach(({node}: {node: LocaleNode}) => {
-      const {lng, ns, data} = node;
-      const parsedData = JSON.parse(data);
-      i18n.addResourceBundle(lng, ns, parsedData);
+      const parsedData = JSON.parse(node.data);
+      i18n.addResourceBundle(node.language, node.ns, parsedData);
     });
   }
 
