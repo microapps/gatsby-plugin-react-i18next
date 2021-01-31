@@ -396,6 +396,26 @@ export const query = graphql`
 `;
 ```
 
+## How to fetch translations of specific namespaces only
+
+You can use `ns` and `language` field in gatsby page queries to fetch specific namespaces that are being used in the page. This will be useful when you have several big pages with lots of translations.
+
+```javascript
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {ns: {regex: "/common|about/"}, language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
+```
+
 ## How to add `sitemap.xml` for all language specific pages
 
 You can use [gatsby-plugin-sitemap](https://www.gatsbyjs.org/packages/gatsby-plugin-sitemap/) to automatically generate a sitemap during build time. You need to customize `query` to fetch only original pages and then `serialize` data to build a sitemap. Here is an example:
