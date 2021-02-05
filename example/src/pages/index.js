@@ -1,6 +1,8 @@
+// i18next-extract-mark-ns-start index
+
 import React from 'react';
 import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
-import {Link as GatsbyLink} from 'gatsby';
+import {graphql, Link as GatsbyLink} from 'gatsby';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
@@ -37,3 +39,17 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {ns: {in: ["common", "index"]}, language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

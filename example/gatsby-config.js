@@ -16,6 +16,13 @@ module.exports = {
         path: `${__dirname}/src/images`
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/locales`,
+        name: `locale`
+      }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -31,15 +38,14 @@ module.exports = {
       }
     },
     {
-      // including a plugin from outside the plugins folder needs the path to it
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         languages,
         defaultLanguage,
-        path: `${__dirname}/locales`,
         siteUrl: 'https://kind-lichterman-5edcb4.netlify.app',
         i18nextOptions: {
-          debug: true,
+          defaultNS: 'common',
+          //debug: true,
           lowerCaseLng: true,
           saveMissing: false,
           interpolation: {
