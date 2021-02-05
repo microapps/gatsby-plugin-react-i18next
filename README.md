@@ -5,7 +5,7 @@ Easily translate your Gatsby website into multiple languages.
 ## Features
 
 - Seamless integration with [react-i18next](https://react.i18next.com/) - a powerful internationalization framework for React.
-- No extra graphql queries to fetch translations, everything is done automatically.
+- Code splitting. Load translations for each page separately.
 - Automatic redirection based on the user's preferred language in browser provided by [browser-lang](https://github.com/wiziple/browser-lang).
 - Support multi-language url routes in a single page component. You don't have to create separate pages such as `pages/en/index.js` or `pages/es/index.js`.
 - SEO friendly
@@ -17,7 +17,7 @@ When you build multilingual sites, Google recommends using different URLs for ea
 
 ## :boom: Breaking change since v0.0.27
 
-As of v0.0.28, language JSON resources should be loaded by `gatsby-source-filesystem` plugin and than fetched by GraphQL query. It enables incremental build and hot-reload as language JSON files change.
+As of v0.0.28, language JSON resources should be loaded by `gatsby-source-filesystem` plugin and then fetched by GraphQL query. It enables incremental build and hot-reload as language JSON files change.
 
 Users who have loaded language JSON files using `path` option will be affected. Please check configuration example on below.
 
@@ -55,8 +55,7 @@ plugins: [
     resolve: `gatsby-source-filesystem`,
     options: {
       path: `${__dirname}/locales`,
-      name: `locale`,
-      ignore: [`**/\.*`, `**/*~`]
+      name: `locale`
     }
   },
   {
@@ -113,8 +112,8 @@ For example:
 
 ```
 |-- en
-    |-- header.json
-    |-- footer.json
+    |-- common.json
+    |-- index.json
 ```
 
 The default namespace is `translation`. [Read more about i18next namespaces](https://www.i18next.com/principles/namespaces)
@@ -382,6 +381,29 @@ pages: [
 ];
 ```
 
+## How to fetch translations of specific namespaces only
+
+You can use `ns` and `language` field in gatsby page queries to fetch specific namespaces that are being used in the page. This will be useful when you have several big pages with lots of translations.
+
+```javascript
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {ns: {in: ["common", "index"]}, language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
+```
+
+Note that in this case only files `common.json` and `index.json` will be loaded.
+This plugin will automatically add all loaded namespaces as fallback namespaces so if you don't specify a namespace in your translations they will still work.
+
 ## How to fetch language specific data
 
 You can use `language` variable in gatsby page queries to fetch additional data for each language. For example if you're using [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/) your query might look like:
@@ -391,26 +413,6 @@ export const query = graphql`
   query($language: String!) {
     dataJson(language: {eq: $language}) {
       ...DataFragment
-    }
-  }
-`;
-```
-
-## How to fetch translations of specific namespaces only
-
-You can use `ns` and `language` field in gatsby page queries to fetch specific namespaces that are being used in the page. This will be useful when you have several big pages with lots of translations.
-
-```javascript
-export const query = graphql`
-  query($language: String!) {
-    locales: allLocale(filter: {ns: {regex: "/common|about/"}, language: {eq: $language}}) {
-      edges {
-        node {
-          ns
-          data
-          language
-        }
-      }
     }
   }
 `;
@@ -522,6 +524,34 @@ module.exports = {
     "extract": "yarn run babel --config-file ./babel-extract.config.js -o tmp/chunk.js 'src/**/*.{js,jsx,ts,tsx}' && rm -rf tmp"
   }
 }
+```
+
+If you want to extract translations per page, you can add a special comment at the beginning of the page:
+
+```
+// i18next-extract-mark-ns-start about-page
+```
+
+This will create a file `about-page.json` with all the translations on this page.
+
+To load this file you need to specify a namespace like this:
+
+```javascript
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(
+      filter: {ns: {in: ["translation", "about-page"]}, language: {eq: $language}}
+    ) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
 ```
 
 ### Automatically translate to different languages

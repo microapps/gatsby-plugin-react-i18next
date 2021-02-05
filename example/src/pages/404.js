@@ -1,3 +1,6 @@
+// i18next-extract-mark-ns-start 404
+
+import {graphql} from 'gatsby';
 import React from 'react';
 import {useTranslation, Trans} from 'gatsby-plugin-react-i18next';
 import Layout from '../components/layout';
@@ -19,3 +22,17 @@ const NotFoundPage = () => {
 };
 
 export default NotFoundPage;
+
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {ns: {in: ["common", "404"]}, language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

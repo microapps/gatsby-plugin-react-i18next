@@ -1,3 +1,6 @@
+// i18next-extract-mark-ns-start page-2
+
+import {graphql} from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -22,3 +25,17 @@ const SecondPage = (props) => {
 };
 
 export default SecondPage;
+
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {ns: {in: ["common", "page-2"]}, language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

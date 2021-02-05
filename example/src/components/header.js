@@ -4,7 +4,7 @@ import './header.css';
 import React from 'react';
 
 const Header = ({siteTitle}) => {
-  const {languages, originalPath} = useI18next();
+  const {languages, originalPath, t} = useI18next();
   return (
     <header className="main-header">
       <h1 style={{margin: 0}}>
@@ -14,7 +14,7 @@ const Header = ({siteTitle}) => {
             color: `white`,
             textDecoration: `none`
           }}>
-          {siteTitle}
+          {t('Welcome to {{siteTitle}}', {siteTitle})}
         </Link>
       </h1>
       <ul className="languages">
