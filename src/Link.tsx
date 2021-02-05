@@ -8,11 +8,12 @@ type Props = GatsbyLinkProps<any> & {language?: string};
 export const Link: React.FC<Props> = ({language, to, onClick, ...rest}) => {
   const context = useContext(I18nextContext);
   const urlLanguage = language || context.language;
-  const link = context.routed
-    ? `/${urlLanguage}${to}`
-    : urlLanguage !== context.defaultLanguage
-    ? `/${urlLanguage}${to}`
-    : to;
+  const getLanguagePath = (language: string) => {
+    return context.generateDefaultLanguagePage || language !== context.defaultLanguage
+      ? `/${language}`
+      : '';
+  };
+  const link = `${getLanguagePath(urlLanguage)}${to}`;
 
   return (
     // @ts-ignore
