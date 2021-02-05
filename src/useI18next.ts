@@ -12,10 +12,10 @@ export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
   const {i18n, t, ready} = useTranslation(ns, options);
   const context = useContext(I18nextContext);
 
-  const {routed, defaultLanguage} = context;
+  const {routed, defaultLanguage, generateDefaultLanguagePage} = context;
 
   const getLanguagePath = (language: string) => {
-    return language !== defaultLanguage ? `/${language}` : '';
+    return generateDefaultLanguagePage || language !== defaultLanguage ? `/${language}` : '';
   };
 
   const removePrefix = (pathname: string) => {
