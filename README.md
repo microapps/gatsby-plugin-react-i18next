@@ -15,9 +15,9 @@ Easily translate your Gatsby website into multiple languages.
 
 When you build multilingual sites, Google recommends using different URLs for each language version of a page rather than using cookies or browser settings to adjust the content language on the page. [(read more)](https://support.google.com/webmasters/answer/182192?hl=en&ref_topic=2370587)
 
-## :boom: Breaking change since v0.0.27
+## :boom: Breaking change since v1.0.0
 
-As of v0.0.28, language JSON resources should be loaded by `gatsby-source-filesystem` plugin and then fetched by GraphQL query. It enables incremental build and hot-reload as language JSON files change.
+As of v1.0.0, language JSON resources should be loaded by `gatsby-source-filesystem` plugin and then fetched by GraphQL query. It enables incremental build and hot-reload as language JSON files change.
 
 Users who have loaded language JSON files using `path` option will be affected. Please check configuration example on below.
 
