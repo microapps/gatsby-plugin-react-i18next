@@ -54,7 +54,7 @@ export const wrapPageElement = (
 
   const localeNodes: Array<{node: LocaleNode}> = data?.[localeJsonNodeName]?.edges || [];
 
-  if (localeNodes.length === 0) {
+  if (languages.length > 1 && localeNodes.length === 0 && process.env.NODE_ENV === 'development') {
     console.error(
       outdent`
       No translations were found in "${localeJsonNodeName}" key for "${originalPath}". 
