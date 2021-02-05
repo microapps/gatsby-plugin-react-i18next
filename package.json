@@ -65,7 +65,6 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "browser-lang": "^0.1.0",
-    "glob": "^7.1.6",
     "path-to-regexp": "^6.1.0"
   },
   "peerDependencies": {

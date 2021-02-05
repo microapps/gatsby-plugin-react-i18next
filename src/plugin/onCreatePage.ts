@@ -1,27 +1,7 @@
-import _glob from 'glob';
 import {CreatePageArgs, Page} from 'gatsby';
 import BP from 'bluebird';
-import fs from 'fs';
-import util from 'util';
 import {match} from 'path-to-regexp';
-import {PageContext, PageOptions, PluginOptions, Resources} from '../types';
-
-const readFile = util.promisify(fs.readFile);
-const glob = util.promisify(_glob);
-
-const getResources = async (path: string, language: string) => {
-  const files = await glob(`${path}/${language}/*.json`);
-  return BP.reduce<string, Resources>(
-    files,
-    async (result, file) => {
-      const [, ns] = /[\/(\w+|\-)]+\/([\w|\-]+)\.json/.exec(file)!;
-      const content = await readFile(file, 'utf8');
-      result[language][ns] = JSON.parse(content);
-      return result;
-    },
-    {[language]: {}}
-  );
-};
+import {PageContext, PageOptions, PluginOptions} from '../types';
 
 export const onCreatePage = async (
   {page, actions}: CreatePageArgs<PageContext>,
@@ -49,7 +29,6 @@ export const onCreatePage = async (
     routed = false,
     pageOptions
   }: GeneratePageParams): Promise<Page<PageContext>> => {
-    const resources = await getResources(pluginOptions.path, language);
     return {
       ...page,
       path,
@@ -61,7 +40,6 @@ export const onCreatePage = async (
           languages: pageOptions?.languages || languages,
           defaultLanguage,
           routed,
-          resources,
           originalPath,
           path
         }
