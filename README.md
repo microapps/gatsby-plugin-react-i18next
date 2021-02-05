@@ -15,9 +15,11 @@ Easily translate your Gatsby website into multiple languages.
 
 When you build multilingual sites, Google recommends using different URLs for each language version of a page rather than using cookies or browser settings to adjust the content language on the page. [(read more)](https://support.google.com/webmasters/answer/182192?hl=en&ref_topic=2370587)
 
-## How is it different from other gatsby i18next plugins?
+## :boom: Breaking change since v0.0.27
 
-This plugin does not require fetching translations with graphql query on each page, everything is done automatically. Just use `react-i18next` to translate your pages.
+As of v0.0.28, language JSON resources should be loaded by `gatsby-source-filesystem` plugin and than fetched by GraphQL query. It enables incremental build and hot-reload as language JSON files change.
+
+Users who have loaded language JSON files using `path` option will be affected. Please check configuration example on below.
 
 ## Demo
 
@@ -50,9 +52,17 @@ npm install --save gatsby-plugin-react-i18next i18next react-i18next
 // In your gatsby-config.js
 plugins: [
   {
-    resolve: `gatsby-plugin-react-i18next`,
+    resolve: `gatsby-source-filesystem`,
     options: {
       path: `${__dirname}/locales`,
+      name: `locale`,
+      ignore: [`**/\.*`, `**/*~`]
+    }
+  },
+  {
+    resolve: `gatsby-plugin-react-i18next`,
+    options: {
+      localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
       languages: [`en`, `es`, `de`],
       defaultLanguage: `en`,
       // if you are using Helmet, you must include siteUrl, and make sure you add http:https
@@ -149,6 +159,20 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
 ```
 
 and in `locales/en/translations.json` you will have
@@ -245,7 +269,8 @@ const Header = ({siteTitle}) => {
 
 | Option                      | Type     | Description                                                                                                                                                                                                                                                                                  |
 | --------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| path                        | string   | path to the folder with JSON translations                                                                                                                                                                                                                                                    |
+| localeJsonSourceName        | string   | name of JSON translation file nodes that are loaded by `gatsby-source-filesystem` (set by `option.name`). Default is `locale`                                                                                                                                                                |
+| localeJsonNodeName          | string   | name of GraphQL node that holds locale data. Default is `locales`                                                                                                                                                                                                                            |
 | languages                   | string[] | supported language keys                                                                                                                                                                                                                                                                      |
 | defaultLanguage             | string   | default language when visiting `/page` instead of `/es/page`                                                                                                                                                                                                                                 |
 | generateDefaultLanguagePage | string   | generate dedicated page for default language. e.g) `/en/page`. It is useful when you need page urls for all languages. For example, server-side [redirect](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect) using `Accept-Language` header. Default is `false`. |
@@ -367,6 +392,26 @@ export const query = graphql`
   query($language: String!) {
     dataJson(language: {eq: $language}) {
       ...DataFragment
+    }
+  }
+`;
+```
+
+## How to fetch translations of specific namespaces only
+
+You can use `ns` and `language` field in gatsby page queries to fetch specific namespaces that are being used in the page. This will be useful when you have several big pages with lots of translations.
+
+```javascript
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {ns: {regex: "/common|about/"}, language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
     }
   }
 `;
