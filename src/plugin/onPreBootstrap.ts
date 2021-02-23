@@ -1,12 +1,11 @@
 import {ParentSpanPluginArgs} from 'gatsby';
 import {PluginOptions} from '../types';
-import report from 'gatsby-cli/lib/reporter';
 
 export const onPreBootstrap = (_args: ParentSpanPluginArgs, pluginOptions: PluginOptions) => {
   // Check for deprecated option.
   if (pluginOptions.hasOwnProperty('path')) {
-    report.error(
-      `gatsby-plugin-react-i18next: 💥💥💥 "path" option is deprecated and won't be working as it was before. Please update setting on your gastby-config.js.\n\nSee detail: https://github.com/microapps/gatsby-plugin-react-i18next\n\n`
+    console.error(
+      `gatsby-plugin-react-i18next: "path" option is deprecated. Please remove it from config in your gastby-config.js. As of v1.0.0, language JSON resources should be loaded by gatsby-source-filesystem plugin and then fetched by GraphQL query. It enables incremental build and hot-reload as language JSON files change.\nSee details: https://github.com/microapps/gatsby-plugin-react-i18next`
     );
   }
 };
