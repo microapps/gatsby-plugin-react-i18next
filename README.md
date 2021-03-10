@@ -28,7 +28,7 @@ Users who have loaded language JSON files using `path` option will be affected. 
 
 ## Used by
 
-- [monei.net](https://monei.com/) - The digital payment gateway with best rates.
+- [monei.com](https://monei.com/) - The digital payment gateway with best rates.
 - [moonmail.io](https://moonmail.io/) - OmniChannel Communication Platform used by more than 100,000 businesses worldwide.
 - [nyxo.app](https://nyxo.app) – Sleep tracking and coaching [(source code)](https://github.com/hello-nyxo/nyxo-website)
 
