@@ -16,6 +16,15 @@ const withI18next = (i18n: I18n, context: I18NextContext) => (children: any) => 
   );
 };
 
+const removePathPrefix = (pathname: string) => {
+  const pathPrefix = withPrefix('/');
+  if (pathname.startsWith(pathPrefix)) {
+    return pathname.replace(pathPrefix, '/');
+  }
+
+  return pathname;
+};
+
 export const wrapPageElement = (
   {element, props}: WrapPageElementBrowserArgs<any, PageContext>,
   {
@@ -51,7 +60,9 @@ export const wrapPageElement = (
 
       if (detected !== defaultLanguage) {
         const queryParams = search || '';
-        const newUrl = withPrefix(`/${detected}${location.pathname}${queryParams}${location.hash}`);
+        const newUrl = withPrefix(
+          `/${detected}${removePathPrefix(location.pathname)}${queryParams}${location.hash}`
+        );
         window.location.replace(newUrl);
         return null;
       }
