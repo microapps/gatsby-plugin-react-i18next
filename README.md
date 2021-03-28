@@ -67,7 +67,6 @@ plugins: [
       // if you are using Helmet, you must include siteUrl, and make sure you add http:https
       siteUrl: `https://example.com/`,
       // you can pass any i18next options
-      // pass following options to allow message content as a key
       i18nextOptions: {
         interpolation: {
           escapeValue: false // not needed for react as it escapes by default
@@ -90,6 +89,10 @@ plugins: [
   }
 ];
 ```
+
+This example is not using semantic keys instead the entire message will be used as a key. [Read more](https://www.i18next.com/principles/fallback#key-fallback).
+
+**NOTE:** If you want nested translation keys do not set `keySeparator: false`. [More configuration options](https://www.i18next.com/overview/configuration-options).
 
 ### You'll also need to add language JSON resources to the project.
 
