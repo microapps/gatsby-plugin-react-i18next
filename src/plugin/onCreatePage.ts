@@ -101,6 +101,9 @@ export const onCreatePage = async (
     if (regexp.test(localePage.path)) {
       localePage.matchPath = `/${lng}/*`;
     }
+    if (localePage.matchPath !== undefined) {
+      localePage.matchPath = `/${lng}${localePage.matchPath}`;
+    }
     createPage(localePage);
   });
 };
