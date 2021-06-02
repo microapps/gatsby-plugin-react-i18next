@@ -482,6 +482,52 @@ plugins: [
 ];
 ```
 
+## How to use a fallback language with semantic keys (vs. message strings)
+
+By default this plugin is setup to fallback on the entire **message string**, that is used as language key.
+
+In order to use **semantic keys**, so the fallback message string is the default's language value (instead of the key), it is possible to do the following;
+
+In `/gatsby-config.js`, setup the plugin as usual, and add the key `options.i18nextOptions.fallbackLng` (i18next documentation, [configuration options](https://www.i18next.com/overview/configuration-options#languages-namespaces-resources), and [fallback options](https://www.i18next.com/principles/fallback#fallback));
+```
+{
+    resolve: `gatsby-plugin-react-i18next`,
+    options: {
+        localeJsonSourceName: `locale`,
+        languages: [`en`, `de`, `fr`],
+        defaultLanguage: `en`,
+        siteUrl: `https://example.com/`,
+        i18nextOptions: {
+            fallbackLng: 'en', // here we provide the fallback language to i18next
+            interpolation: {
+                escapeValue: false
+            },
+            keySeparator: false,
+            nsSeparator: false
+        }
+    }
+}
+```
+
+Then in a page query, we avoid to specify a `$language` variable used as filter, so i18next gets access to the available locales, used as fallback.
+
+```
+// /pages/index.js
+export const query = graphql`
+  query { // no $language variable defined, no filters on allLocale
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;
+```
+
 ## How to extract translations from pages
 
 You can use [babel-plugin-i18next-extract](https://i18next-extract.netlify.app) automatically extract translations inside `t` function and `Trans` component from you pages and save them in JSON.
