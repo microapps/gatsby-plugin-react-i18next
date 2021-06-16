@@ -372,6 +372,22 @@ In this example the plugin will automatically generate language pages for all la
 
 Omit `excludeLanguages` to get all the languages form the path. Make sure that you have pages for all the languages that you specify in the plugin, otherwise you might have broken links.
 
+You may also need to add a pages config for the 404 page, if it uses the same path pattern as your excluded pages. Note that the order of these rules is important. 
+
+```js
+pages: [
+  {
+    matchPath: '/:lang?/404',
+    getLanguageFromPath: false,
+  },
+  {
+    matchPath: '/:lang?/:uid',
+    getLanguageFromPath: true,
+    excludeLanguages: ['es']
+  }
+];
+```
+
 ## How to exclude a page that should not be translated
 
 You can limit the languages used to generate versions of a specific page, for exmaple to limit `/preview` page to only English version:
