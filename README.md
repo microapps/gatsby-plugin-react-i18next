@@ -130,6 +130,7 @@ Use react i18next [`useTranslation`](https://react.i18next.com/latest/usetransla
 Replace [Gatsby `Link`](https://www.gatsbyjs.org/docs/gatsby-link) component with the `Link` component exported from `gatsby-plugin-react-i18next`
 
 ```javascript
+import { graphql } from "gatsby"
 import React from 'react';
 import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
 import Layout from '../components/layout';
