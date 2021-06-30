@@ -79,7 +79,7 @@ export const wrapPageElement = (
       
       export const query = graphql\`
         query($language: String!) {
-          ${localeJsonNodeName}: allLocale(language: {eq: $language}}) {
+          ${localeJsonNodeName}: allLocale(language: {eq: $language}) {
             edges {
               node {
                 ns
