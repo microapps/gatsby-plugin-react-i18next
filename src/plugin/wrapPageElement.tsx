@@ -1,11 +1,11 @@
 import React from 'react';
-import {withPrefix, WrapPageElementBrowserArgs} from 'gatsby';
+import { withPrefix, WrapPageElementBrowserArgs } from 'gatsby';
 // @ts-ignore
 import browserLang from 'browser-lang';
-import {I18NextContext, LANGUAGE_KEY, PageContext, PluginOptions, LocaleNode} from '../types';
-import i18next, {i18n as I18n} from 'i18next';
-import {I18nextProvider} from 'react-i18next';
-import {I18nextContext} from '../i18nextContext';
+import { I18NextContext, LANGUAGE_KEY, PageContext, PluginOptions, LocaleNode } from '../types';
+import i18next, { i18n as I18n } from 'i18next';
+import { I18nextProvider } from 'react-i18next';
+import { I18nextContext } from '../i18nextContext';
 import outdent from 'outdent';
 
 const withI18next = (i18n: I18n, context: I18NextContext) => (children: any) => {
@@ -26,7 +26,7 @@ const removePathPrefix = (pathname: string) => {
 };
 
 export const wrapPageElement = (
-  {element, props}: WrapPageElementBrowserArgs<any, PageContext>,
+  { element, props }: WrapPageElementBrowserArgs<any, PageContext>,
   {
     i18nextOptions = {},
     redirect = true,
@@ -36,17 +36,17 @@ export const wrapPageElement = (
   }: PluginOptions
 ) => {
   if (!props) return;
-  const {data, pageContext, location} = props;
-  const {routed, language, languages, originalPath, defaultLanguage, path} = pageContext.i18n;
+  const { data, pageContext, location } = props;
+  const { routed, language, languages, originalPath, defaultLanguage, path } = pageContext.i18n;
   const isRedirect = redirect && !routed;
 
   if (isRedirect) {
-    const {search} = location;
+    const { search } = location;
 
     // Skip build, Browsers only
     if (typeof window !== 'undefined') {
       let detected =
-        window.localStorage.getItem(LANGUAGE_KEY) ||
+        window.sessionStorage.getItem(LANGUAGE_KEY) ||
         browserLang({
           languages,
           fallback: language
@@ -56,7 +56,7 @@ export const wrapPageElement = (
         detected = language;
       }
 
-      window.localStorage.setItem(LANGUAGE_KEY, detected);
+      window.sessionStorage.setItem(LANGUAGE_KEY, detected);
 
       if (detected !== defaultLanguage) {
         const queryParams = search || '';
@@ -69,7 +69,7 @@ export const wrapPageElement = (
     }
   }
 
-  const localeNodes: Array<{node: LocaleNode}> = data?.[localeJsonNodeName]?.edges || [];
+  const localeNodes: Array<{ node: LocaleNode }> = data?.[localeJsonNodeName]?.edges || [];
 
   if (languages.length > 1 && localeNodes.length === 0 && process.env.NODE_ENV === 'development') {
     console.error(
@@ -94,7 +94,7 @@ export const wrapPageElement = (
     );
   }
 
-  const namespaces = localeNodes.map(({node}) => node.ns);
+  const namespaces = localeNodes.map(({ node }) => node.ns);
 
   // We want to set default namespace to a page namespace if it exists
   // and use other namespaces as fallback
@@ -116,7 +116,7 @@ export const wrapPageElement = (
     }
   });
 
-  localeNodes.forEach(({node}) => {
+  localeNodes.forEach(({ node }) => {
     const parsedData = JSON.parse(node.data);
     i18n.addResourceBundle(node.language, node.ns, parsedData);
   });
