@@ -1,18 +1,18 @@
-import {Namespace, useTranslation, UseTranslationOptions} from 'react-i18next';
-import {useContext} from 'react';
-import {navigate as gatsbyNavigate} from 'gatsby';
-import {I18nextContext} from './i18nextContext';
-import {NavigateOptions} from '@reach/router';
-import {LANGUAGE_KEY} from './types';
+import { Namespace, useTranslation, UseTranslationOptions } from 'react-i18next';
+import { useContext } from 'react';
+import { navigate as gatsbyNavigate } from 'gatsby';
+import { I18nextContext } from './i18nextContext';
+import { NavigateOptions } from '@reach/router';
+import { LANGUAGE_KEY } from './types';
 
 declare var __BASE_PATH__: string | undefined;
 declare var __PATH_PREFIX__: string | undefined;
 
 export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
-  const {i18n, t, ready} = useTranslation(ns, options);
+  const { i18n, t, ready } = useTranslation(ns, options);
   const context = useContext(I18nextContext);
 
-  const {routed, defaultLanguage, generateDefaultLanguagePage} = context;
+  const { routed, defaultLanguage, generateDefaultLanguagePage } = context;
 
   const getLanguagePath = (language: string) => {
     return generateDefaultLanguagePage || language !== defaultLanguage ? `/${language}` : '';
@@ -42,7 +42,7 @@ export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
     const languagePath = getLanguagePath(language);
     const pathname = to || removeLocalePart(removePrefix(window.location.pathname));
     const link = `${languagePath}${pathname}${window.location.search}`;
-    localStorage.setItem(LANGUAGE_KEY, language);
+    sessionStorage.setItem(LANGUAGE_KEY, language);
     return gatsbyNavigate(link, options);
   };
 
