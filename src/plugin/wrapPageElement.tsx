@@ -32,7 +32,8 @@ export const wrapPageElement = (
     redirect = true,
     generateDefaultLanguagePage = false,
     siteUrl,
-    localeJsonNodeName = 'locales'
+    localeJsonNodeName = 'locales',
+    fallbackLanguage
   }: PluginOptions
 ) => {
   if (!props) return;
@@ -49,7 +50,7 @@ export const wrapPageElement = (
         window.localStorage.getItem(LANGUAGE_KEY) ||
         browserLang({
           languages,
-          fallback: language
+          fallback: fallbackLanguage || language
         });
 
       if (!languages.includes(detected)) {
