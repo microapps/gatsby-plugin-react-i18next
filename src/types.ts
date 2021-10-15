@@ -3,6 +3,8 @@ import {NodeInput} from 'gatsby';
 
 export const LANGUAGE_KEY = 'gatsby-i18next-language';
 
+export type {Resource, ResourceLanguage, ResourceKey} from 'i18next';
+
 export type PageOptions = {
   matchPath: string;
   getLanguageFromPath?: boolean;
