@@ -20,6 +20,7 @@ export type PluginOptions = {
   pages: Array<PageOptions>;
   localeJsonSourceName?: string;
   localeJsonNodeName?: string;
+  fallbackLanguage?: string;
 };
 
 export type I18NextContext = {

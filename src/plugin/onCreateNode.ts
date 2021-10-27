@@ -14,7 +14,8 @@ export const onCreateNode = async (
     createNodeId,
     createContentDigest,
     reporter
-  }: CreateNodeArgs<FileSystemNode>,
+  }: // @ts-ignore
+  CreateNodeArgs<FileSystemNode>,
   {localeJsonSourceName = 'locale'}: PluginOptions
 ) => {
   if (!unstable_shouldOnCreateNode({node})) {
@@ -23,7 +24,7 @@ export const onCreateNode = async (
 
   const {
     absolutePath,
-    internal: {mediaType, type},
+    internal: {type},
     sourceInstanceName,
     relativeDirectory,
     name,

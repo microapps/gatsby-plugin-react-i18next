@@ -163,7 +163,7 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(filter: {language: {eq: $language}}) {
       edges {
         node {
@@ -275,6 +275,7 @@ const Header = ({siteTitle}) => {
 | localeJsonNodeName          | string   | name of GraphQL node that holds locale data. Default is `locales`                                                                                                                                                                                                                            |
 | languages                   | string[] | supported language keys                                                                                                                                                                                                                                                                      |
 | defaultLanguage             | string   | default language when visiting `/page` instead of `/es/page`                                                                                                                                                                                                                                 |
+| fallbackLanguage            | string   | optionally fallback to a different language than the defaultLanguage                                                                                                                                                                                                                         |
 | generateDefaultLanguagePage | string   | generate dedicated page for default language. e.g) `/en/page`. It is useful when you need page urls for all languages. For example, server-side [redirect](https://www.gatsbyjs.com/docs/reference/config-files/actions/#createRedirect) using `Accept-Language` header. Default is `false`. |
 | redirect                    | boolean  | if the value is `true`, `/` or `/page-2` will be redirected to the user's preferred language router. e.g) `/es` or `/es/page-2`. Otherwise, the pages will render `defaultLangugage` language. Default is `true`                                                                             |
 | siteUrl                     | string   | public site url, is used to generate language specific meta tags                                                                                                                                                                                                                             |
@@ -391,7 +392,7 @@ You can use `ns` and `language` field in gatsby page queries to fetch specific n
 
 ```javascript
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(filter: {ns: {in: ["common", "index"]}, language: {eq: $language}}) {
       edges {
         node {
@@ -414,7 +415,7 @@ You can use `language` variable in gatsby page queries to fetch additional data 
 
 ```javascript
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     dataJson(language: {eq: $language}) {
       ...DataFragment
     }
@@ -542,7 +543,7 @@ To load this file you need to specify a namespace like this:
 
 ```javascript
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(
       filter: {ns: {in: ["translation", "about-page"]}, language: {eq: $language}}
     ) {
@@ -563,6 +564,28 @@ export const query = graphql`
 After your messages had been extracted you can use [AWS Translate](https://aws.amazon.com/translate/) to automatically translate messages to different languages.
 
 This functionality is out of the scope of this plugin, but you can get the idea from [this script](/example/translate.js)
+
+## How to fallback to a different language than the defaultLanguage
+
+By default, on first load, this plugin will fallback to the defaultLanguage if the browser's detected language is not included in the array of languages.
+
+If you want to fallback to a different language in the languages array, you can set the `fallbackLanguage` option.
+
+For example, if the default language of your site is Japanese, you only have English as another language, and you want all other browser-detected languages to fallback to English, not Japanese.
+
+```javascript
+module.exports = {
+  plugins: [
+    {
+      resolve: 'gatsby-plugin-react-i18next',
+      options: {
+        defaultLanguage: 'ja',
+        fallbackLanguage: 'en'
+      }
+    }
+  ]
+};
+```
 
 ## Credits
 
