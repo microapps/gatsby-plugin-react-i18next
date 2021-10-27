@@ -9,7 +9,6 @@ import {
   PluginOptions,
   LocaleNode,
   Resource,
-  ResourceLanguage,
   ResourceKey
 } from '../types';
 import i18next, {i18n as I18n} from 'i18next';
