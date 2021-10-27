@@ -27,7 +27,7 @@ const SecondPage = (props) => {
 export default SecondPage;
 
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(filter: {ns: {in: ["common", "page-2"]}, language: {eq: $language}}) {
       edges {
         node {

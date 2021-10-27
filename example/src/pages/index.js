@@ -47,7 +47,7 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(filter: {ns: {in: ["common", "index"]}, language: {eq: $language}}) {
       edges {
         node {

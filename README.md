@@ -163,7 +163,7 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(filter: {language: {eq: $language}}) {
       edges {
         node {
@@ -392,7 +392,7 @@ You can use `ns` and `language` field in gatsby page queries to fetch specific n
 
 ```javascript
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(filter: {ns: {in: ["common", "index"]}, language: {eq: $language}}) {
       edges {
         node {
@@ -415,7 +415,7 @@ You can use `language` variable in gatsby page queries to fetch additional data 
 
 ```javascript
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     dataJson(language: {eq: $language}) {
       ...DataFragment
     }
@@ -543,7 +543,7 @@ To load this file you need to specify a namespace like this:
 
 ```javascript
 export const query = graphql`
-  query($language: String!) {
+  query ($language: String!) {
     locales: allLocale(
       filter: {ns: {in: ["translation", "about-page"]}, language: {eq: $language}}
     ) {
