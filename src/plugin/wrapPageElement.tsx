@@ -2,7 +2,16 @@ import React from 'react';
 import {withPrefix, WrapPageElementBrowserArgs} from 'gatsby';
 // @ts-ignore
 import browserLang from 'browser-lang';
-import {I18NextContext, LANGUAGE_KEY, PageContext, PluginOptions, LocaleNode} from '../types';
+import {
+  I18NextContext,
+  LANGUAGE_KEY,
+  PageContext,
+  PluginOptions,
+  LocaleNode,
+  Resource,
+  ResourceLanguage,
+  ResourceKey
+} from '../types';
 import i18next, {i18n as I18n} from 'i18next';
 import {I18nextProvider} from 'react-i18next';
 import {I18nextContext} from '../i18nextContext';
@@ -104,10 +113,21 @@ export const wrapPageElement = (
   defaultNS = namespaces.find((ns) => ns !== defaultNS) || defaultNS;
   const fallbackNS = namespaces.filter((ns) => ns !== defaultNS);
 
+  const resources: Resource = localeNodes.reduce<Resource>((res: Resource, {node}) => {
+    const parsedData: ResourceKey = JSON.parse(node.data);
+
+    if (!(node.language in res)) res[node.language] = {};
+
+    res[node.language][node.ns] = parsedData;
+
+    return res;
+  }, {});
+
   const i18n = i18next.createInstance();
 
   i18n.init({
     ...i18nextOptions,
+    resources,
     lng: language,
     fallbackLng: defaultLanguage,
     defaultNS,
@@ -115,11 +135,6 @@ export const wrapPageElement = (
     react: {
       useSuspense: false
     }
-  });
-
-  localeNodes.forEach(({node}) => {
-    const parsedData = JSON.parse(node.data);
-    i18n.addResourceBundle(node.language, node.ns, parsedData);
   });
 
   if (i18n.language !== language) {
