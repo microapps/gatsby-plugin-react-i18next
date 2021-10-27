@@ -92,9 +92,6 @@
     "github": {
       "release": true
     },
-    "npm": {
-      "publish": true
-    },
     "hooks": {
       "before:init": [
         "yarn run format",
