@@ -72,6 +72,7 @@ export const wrapPageElement = (
         const newUrl = withPrefix(
           `/${detected}${removePathPrefix(location.pathname)}${queryParams}${location.hash}`
         );
+        // @ts-ignore
         window.___replace(newUrl);
         return null;
       }
