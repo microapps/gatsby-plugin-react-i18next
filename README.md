@@ -281,6 +281,7 @@ const Header = ({siteTitle}) => {
 | siteUrl                     | string   | public site url, is used to generate language specific meta tags                                                                                                                                                                                                                             |
 | pages                       | array    | an array of [page options](#page-options) used to modify plugin behaviour for specific pages                                                                                                                                                                                                 |
 | i18nextOptions              | object   | [i18next configuration options](https://www.i18next.com/overview/configuration-options)                                                                                                                                                                                                      |
+| verbose                     | boolean  | Verbose output. Default is true                                                                                                                                                                                                                                                              |
 
 ## Page options
 

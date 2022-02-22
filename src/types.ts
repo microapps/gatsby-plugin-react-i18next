@@ -23,6 +23,7 @@ export type PluginOptions = {
   localeJsonSourceName?: string;
   localeJsonNodeName?: string;
   fallbackLanguage?: string;
+  verbose?: boolean;
 };
 
 export type I18NextContext = {
