@@ -16,7 +16,7 @@ export const onCreateNode = async (
     reporter
   }: // @ts-ignore
   CreateNodeArgs<FileSystemNode>,
-  {localeJsonSourceName = 'locale'}: PluginOptions
+  {localeJsonSourceName = 'locale', verbose = true}: PluginOptions
 ) => {
   if (!unstable_shouldOnCreateNode({node})) {
     return;
@@ -45,10 +45,13 @@ export const onCreateNode = async (
     return;
   }
 
-  const activity = reporter.activityTimer(
-    `gatsby-plugin-react-i18next: create node: ${relativeDirectory}/${name}`
-  );
-  activity.start();
+  let activity;
+  if (verbose) {
+    activity = reporter.activityTimer(
+      `gatsby-plugin-react-i18next: create node: ${relativeDirectory}/${name}`
+    );
+    activity.start();
+  }
 
   // relativeDirectory name is language name.
   const language = relativeDirectory;
@@ -86,5 +89,7 @@ export const onCreateNode = async (
   // staled issue: https://github.com/gatsbyjs/gatsby/issues/19993
   createParentChildLink({parent: node, child: localeNode});
 
-  activity.end();
+  if (verbose && activity) {
+    activity.end();
+  }
 };
