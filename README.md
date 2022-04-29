@@ -434,7 +434,7 @@ plugins: [
   {
     resolve: 'gatsby-plugin-sitemap',
     options: {
-      exclude: ['/**/404', '/**/404.html'],
+      excludes: ['/**/404', '/**/404.html'],
       query: `
           {
             site {
