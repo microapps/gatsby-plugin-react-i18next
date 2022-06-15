@@ -15,6 +15,10 @@ Easily translate your Gatsby website into multiple languages.
 
 When you build multilingual sites, Google recommends using different URLs for each language version of a page rather than using cookies or browser settings to adjust the content language on the page. [(read more)](https://support.google.com/webmasters/answer/182192?hl=en&ref_topic=2370587)
 
+## :boom: Breaking change since v2.0.0
+
+As of V2.0.0, this plugin only supports Gatsby 4.16.0+ and React 18+.
+
 ## :boom: Breaking change since v1.0.0
 
 As of v1.0.0, language JSON resources should be loaded by `gatsby-source-filesystem` plugin and then fetched by GraphQL query. It enables incremental build and hot-reload as language JSON files change.
@@ -65,7 +69,9 @@ plugins: [
       languages: [`en`, `es`, `de`],
       defaultLanguage: `en`,
       // if you are using Helmet, you must include siteUrl, and make sure you add http:https
-      siteUrl: `https://example.com/`,
+      siteUrl: `https://example.com`,
+      // if you are using trailingSlash gatsby config include it here, as well (the default is 'always')
+      trailingSlash: 'always',
       // you can pass any i18next options
       i18nextOptions: {
         interpolation: {

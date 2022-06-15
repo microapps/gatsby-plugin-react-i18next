@@ -23,6 +23,7 @@ export type PluginOptions = {
   localeJsonSourceName?: string;
   localeJsonNodeName?: string;
   fallbackLanguage?: string;
+  trailingSlash?: 'always' | 'never' | 'ignore';
   verbose?: boolean;
 };
 
