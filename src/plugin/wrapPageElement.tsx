@@ -24,13 +24,19 @@ const withI18next = (i18n: I18n, context: I18NextContext) => (children: any) => 
   );
 };
 
-const removePathPrefix = (pathname: string) => {
+const removePathPrefix = (pathname: string, stripTrailingSlash: boolean) => {
   const pathPrefix = withPrefix('/');
+  let result = pathname;
+
   if (pathname.startsWith(pathPrefix)) {
-    return pathname.replace(pathPrefix, '/');
+    result = pathname.replace(pathPrefix, '/');
   }
 
-  return pathname;
+  if (stripTrailingSlash && result.endsWith('/')) {
+    return result.slice(0, -1);
+  }
+
+  return result;
 };
 
 export const wrapPageElement = (
@@ -41,7 +47,8 @@ export const wrapPageElement = (
     generateDefaultLanguagePage = false,
     siteUrl,
     localeJsonNodeName = 'locales',
-    fallbackLanguage
+    fallbackLanguage,
+    trailingSlash
   }: PluginOptions
 ) => {
   if (!props) return;
@@ -69,8 +76,11 @@ export const wrapPageElement = (
 
       if (detected !== defaultLanguage) {
         const queryParams = search || '';
+        const stripTrailingSlash = trailingSlash === 'never';
         const newUrl = withPrefix(
-          `/${detected}${removePathPrefix(location.pathname)}${queryParams}${location.hash}`
+          `/${detected}${removePathPrefix(location.pathname, stripTrailingSlash)}${queryParams}${
+            location.hash
+          }`
         );
         // @ts-ignore
         window.___replace(newUrl);
