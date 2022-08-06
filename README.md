@@ -106,9 +106,9 @@ For example,
 
 | language resource files                                              | language |
 | -------------------------------------------------------------------- | -------- |
-| [/locales/en/translation.json](/example/locales/en/translation.json) | English  |
-| [/locales/es/translation.json](/example/locales/es/translation.json) | Spanish  |
-| [/locales/de/translation.json](/example/locales/de/translation.json) | German   |
+| [/locales/en/index.json](https://github.com/microapps/gatsby-plugin-react-i18next/blob/master/example/locales/en/index.json) | English  |
+| [/locales/es/index.json](https://github.com/microapps/gatsby-plugin-react-i18next/blob/master/example/locales/es/index.json) | Spanish  |
+| [/locales/de/index.json](https://github.com/microapps/gatsby-plugin-react-i18next/blob/master/example/locales/de/index.json) | German   |
 
 You can use different namespaces to organize your translations. Use the following file structure:
 
