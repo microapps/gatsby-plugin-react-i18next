@@ -124,7 +124,8 @@ export const wrapPageElement = (
   const fallbackNS = namespaces.filter((ns) => ns !== defaultNS);
 
   const resources: Resource = localeNodes.reduce<Resource>((res: Resource, {node}) => {
-    const parsedData: ResourceKey = typeof node.data === 'object' ? node.data : JSON.parse(node.data);
+    const parsedData: ResourceKey =
+      typeof node.data === 'object' ? node.data : JSON.parse(node.data);
 
     if (!(node.language in res)) res[node.language] = {};
 
