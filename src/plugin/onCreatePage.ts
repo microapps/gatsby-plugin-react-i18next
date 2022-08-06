@@ -8,7 +8,7 @@ export const onCreatePage = async (
   pluginOptions: PluginOptions
 ) => {
   //Exit if the page has already been processed.
-  if (typeof page.context.i18n === 'object') {
+  if (typeof page.context?.i18n === 'object') {
     return;
   }
 
@@ -25,6 +25,7 @@ export const onCreatePage = async (
     path?: string;
     originalPath?: string;
     routed?: boolean;
+    matchPath?: string;
     pageOptions?: PageOptions;
   };
   const generatePage = async ({
@@ -41,6 +42,7 @@ export const onCreatePage = async (
       path,
       context: {
         ...page.context,
+        path,
         language,
         i18n: {
           language,
