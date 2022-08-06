@@ -143,6 +143,7 @@ export const wrapPageElement = (
     defaultNS,
     fallbackNS,
     react: {
+      ...i18nextOptions.react,
       useSuspense: false
     }
   });
