@@ -36,6 +36,10 @@ Users who have loaded language JSON files using `path` option will be affected. 
 - [moonmail.io](https://moonmail.io/) - OmniChannel Communication Platform used by more than 100,000 businesses worldwide.
 - [nyxo.app](https://nyxo.app) – Sleep tracking and coaching [(source code)](https://github.com/hello-nyxo/nyxo-website)
 
+### Tutorials
+
+- [Best internationalization for Gatsby](https://dev.to/adrai/best-internationalization-for-gatsby-mkf) by Daewoong Moon
+
 ## How to use
 
 ### Install package
@@ -656,6 +660,11 @@ module.exports = {
   ]
 };
 ```
+
+## Mentions
+
+- [Best internationalization for Gatsby](https://dev.to/adrai/best-internationalization-for-gatsby-mkf) by 
+Adriano Raiano
 
 ## Credits
 
