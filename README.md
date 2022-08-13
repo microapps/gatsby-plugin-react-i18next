@@ -38,7 +38,7 @@ Users who have loaded language JSON files using `path` option will be affected. 
 
 ### Tutorials
 
-- [Best internationalization for Gatsby](https://dev.to/adrai/best-internationalization-for-gatsby-mkf) by Daewoong Moon
+- [Best internationalization for Gatsby](https://dev.to/adrai/best-internationalization-for-gatsby-mkf) by Adriano Raiano
 
 ## How to use
 
