@@ -32,10 +32,12 @@ export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
     return pathname.substring(i);
   };
 
-  const navigate = (to: string, options?: NavigateOptions<{}>) => {
+  const navigate: typeof gatsbyNavigate = (...args) => {
+    const [to, options] = args;
+    if (typeof to === `number`) return gatsbyNavigate(to);
     const languagePath = getLanguagePath(context.language);
     const link = routed ? `${languagePath}${to}` : `${to}`;
-    return gatsbyNavigate(link, options);
+    return gatsbyNavigate(link, options as NavigateOptions<{}> | undefined);
   };
 
   const changeLanguage = (language: string, to?: string, options?: NavigateOptions<{}>) => {
