@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "bluebird": "^3.7.2",
-    "browser-lang": "^0.1.0",
+    "browser-lang": "^0.2.0",
     "outdent": "^0.8.0",
     "path-to-regexp": "^6.2.0"
   },
