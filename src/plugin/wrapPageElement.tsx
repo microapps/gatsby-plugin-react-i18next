@@ -119,7 +119,7 @@ export const wrapPageElement = (
   // We want to set default namespace to a page namespace if it exists
   // and use other namespaces as fallback
   // this way you dont need to specify namespaces in pages
-  let defaultNS = i18nextOptions.defaultNS || 'translation';
+  let defaultNS = i18nextOptions.defaultNS?.toString() || 'translation';
   defaultNS = namespaces.find((ns) => ns !== defaultNS) || defaultNS;
   const fallbackNS = namespaces.filter((ns) => ns !== defaultNS);
 
@@ -129,7 +129,7 @@ export const wrapPageElement = (
 
     if (!(node.language in res)) res[node.language] = {};
 
-    res[node.language][node.ns] = parsedData;
+    res[node.language][node.ns || defaultNS] = parsedData;
 
     return res;
   }, {});
