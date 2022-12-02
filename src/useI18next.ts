@@ -1,4 +1,5 @@
-import {DefaultNamespace, useTranslation, UseTranslationOptions} from 'react-i18next';
+import {useTranslation, UseTranslationOptions} from 'react-i18next';
+import {Namespace} from 'i18next';
 import {useContext} from 'react';
 import {navigate as gatsbyNavigate} from 'gatsby';
 import {I18nextContext} from './i18nextContext';
@@ -8,7 +9,7 @@ import {LANGUAGE_KEY} from './types';
 declare var __BASE_PATH__: string | undefined;
 declare var __PATH_PREFIX__: string | undefined;
 
-export const useI18next = (ns?: DefaultNamespace, options?: UseTranslationOptions) => {
+export const useI18next = (ns?: Namespace, options?: UseTranslationOptions) => {
   const {i18n, t, ready} = useTranslation(ns, options);
   const context = useContext(I18nextContext);
 

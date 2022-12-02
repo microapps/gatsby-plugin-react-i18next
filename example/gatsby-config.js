@@ -1,4 +1,5 @@
 const {languages, defaultLanguage} = require('./languages');
+const siteUrl = process.env.URL || `https://fallback.net`;
 
 module.exports = {
   siteMetadata: {
@@ -68,11 +69,6 @@ module.exports = {
         excludes: ['/**/404', '/**/404.html'],
         query: `
           {
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
             allSitePage(filter: {context: {i18n: {routed: {eq: false}}}}) {
               edges {
                 node {
@@ -89,10 +85,10 @@ module.exports = {
             }
           }
         `,
-        serialize: ({site, allSitePage}) => {
+        resolveSiteUrl: () => siteUrl,
+        serialize: ({allSitePage}) => {
           return allSitePage.edges.map((edge) => {
             const {languages, originalPath, defaultLanguage} = edge.node.context.i18n;
-            const {siteUrl} = site.siteMetadata;
             const url = siteUrl + originalPath;
             const links = [
               {lang: defaultLanguage, url},
