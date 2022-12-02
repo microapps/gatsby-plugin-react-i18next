@@ -377,7 +377,7 @@ pages: [
 ```
 
 You have to specify a `:lang` url param, so the plugin knows what part of the path should be treated as language key.
-In this example the plugin will automatically generate language pages for all languages except `es`. Assuming that you have `['en', 'es', 'de']` languages te blog post with the path `/blog/hello-world` you will have the following pages generated:
+In this example the plugin will automatically generate language pages for all languages except `es`. Assuming that you have `['en', 'es', 'de']` languages the blog post with the path `/blog/hello-world` you will have the following pages generated:
 
 - `/blog/hello-world` - the English version (if you have `en` as a `defaultLanguage`)
 - `/es/blog/hello-world` - the Spanish version that should exist before you run the plugin (created manually or at build time with a plugin or api call)
@@ -403,7 +403,7 @@ pages: [
 
 ## How to exclude a page that should not be translated
 
-You can limit the languages used to generate versions of a specific page, for exmaple to limit `/preview` page to only English version:
+You can limit the languages used to generate versions of a specific page, for example to limit `/preview` page to only English version:
 
 ```js
 pages: [
@@ -637,7 +637,7 @@ export const query = graphql`
 
 After your messages had been extracted you can use [AWS Translate](https://aws.amazon.com/translate/) to automatically translate messages to different languages.
 
-This functionality is out of the scope of this plugin, but you can get the idea from [this script](/example/translate.js)
+This functionality is out of the scope of this plugin, but you can get the idea from [this script](/example/translate.js).
 
 ## How to fallback to a different language than the defaultLanguage
 
