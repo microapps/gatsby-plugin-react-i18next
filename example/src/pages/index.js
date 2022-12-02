@@ -5,13 +5,11 @@ import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
 import {graphql, Link as GatsbyLink} from 'gatsby';
 import {StaticImage} from 'gatsby-plugin-image';
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Seo from '../components/seo';
 
 const IndexPage = () => {
-  const {t} = useTranslation();
   return (
     <Layout>
-      <SEO title={t('Home')} />
       <h1>
         <Trans>Hi people</Trans>
       </h1>
@@ -42,6 +40,11 @@ const IndexPage = () => {
       </p>
     </Layout>
   );
+};
+
+export const Head = () => {
+  const {t} = useTranslation();
+  return <Seo title={t('Home')} />;
 };
 
 export default IndexPage;

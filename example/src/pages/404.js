@@ -4,13 +4,11 @@ import {graphql} from 'gatsby';
 import React from 'react';
 import {useTranslation, Trans} from 'gatsby-plugin-react-i18next';
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Seo from '../components/seo';
 
 const NotFoundPage = () => {
-  const {t} = useTranslation();
   return (
     <Layout>
-      <SEO title={t('404: Not found')} />
       <h1>
         <Trans>NOT FOUND</Trans>
       </h1>
@@ -19,6 +17,11 @@ const NotFoundPage = () => {
       </p>
     </Layout>
   );
+};
+
+export const Head = () => {
+  const {t} = useTranslation();
+  return <Seo title={t('404: Not found')} />;
 };
 
 export default NotFoundPage;

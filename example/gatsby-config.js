@@ -8,7 +8,6 @@ module.exports = {
     siteUrl: 'https://kind-lichterman-5edcb4.netlify.app'
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -66,7 +65,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/**/404', '/**/404.html'],
+        excludes: ['/**/404', '/**/404.html'],
         query: `
           {
             site {
