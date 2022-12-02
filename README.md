@@ -72,7 +72,7 @@ plugins: [
       localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
       languages: [`en`, `es`, `de`],
       defaultLanguage: `en`,
-      // if you are using Helmet, you must include siteUrl, and make sure you add http:https
+      // if you are using Head, you must include siteUrl, and make sure you add http:https
       siteUrl: `https://example.com`,
       // if you are using trailingSlash gatsby config include it here, as well (the default is 'always')
       trailingSlash: 'always',
@@ -108,8 +108,8 @@ This example is not using semantic keys instead the entire message will be used 
 
 For example,
 
-| language resource files                                              | language |
-| -------------------------------------------------------------------- | -------- |
+| language resource files                                                                                                      | language |
+| ---------------------------------------------------------------------------------------------------------------------------- | -------- |
 | [/locales/en/index.json](https://github.com/microapps/gatsby-plugin-react-i18next/blob/master/example/locales/en/index.json) | English  |
 | [/locales/es/index.json](https://github.com/microapps/gatsby-plugin-react-i18next/blob/master/example/locales/es/index.json) | Spanish  |
 | [/locales/de/index.json](https://github.com/microapps/gatsby-plugin-react-i18next/blob/master/example/locales/de/index.json) | German   |
@@ -140,7 +140,7 @@ Use react i18next [`useTranslation`](https://react.i18next.com/latest/usetransla
 Replace [Gatsby `Link`](https://www.gatsbyjs.org/docs/gatsby-link) component with the `Link` component exported from `gatsby-plugin-react-i18next`
 
 ```javascript
-import { graphql } from "gatsby"
+import {graphql} from 'gatsby';
 import React from 'react';
 import {Link, Trans, useTranslation} from 'gatsby-plugin-react-i18next';
 import Layout from '../components/layout';
@@ -319,12 +319,6 @@ const SpanishAboutLink = () => (
 );
 ```
 
-### `Helmet`
-
-`Helmet` component is identical to [`gatsby-plugin-react-helmet`](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet) component but also provides language related metatags (alternative and canonical links)
-
-**Note!** To use it you need to have `react-helmet` dependency installed. You also need to provide `siteUrl` in plugin options for it to work properly.
-
 ### `I18nextContext`
 
 Use this react context to access language information about the page
@@ -385,13 +379,13 @@ In this example the plugin will automatically generate language pages for all la
 
 Omit `excludeLanguages` to get all the languages form the path. Make sure that you have pages for all the languages that you specify in the plugin, otherwise you might have broken links.
 
-You may also need to add a pages config for the 404 page, if it uses the same path pattern as your excluded pages. Note that the order of these rules is important. 
+You may also need to add a pages config for the 404 page, if it uses the same path pattern as your excluded pages. Note that the order of these rules is important.
 
 ```js
 pages: [
   {
     matchPath: '/:lang?/404',
-    getLanguageFromPath: false,
+    getLanguageFromPath: false
   },
   {
     matchPath: '/:lang?/:uid',
@@ -518,6 +512,7 @@ By default this plugin is setup to fallback on the entire **message string**, th
 In order to use **semantic keys**, so the fallback message string is the default's language value (instead of the key), it is possible to do the following;
 
 In `/gatsby-config.js`, setup the plugin as usual, and add the key `options.i18nextOptions.fallbackLng` (i18next documentation, [configuration options](https://www.i18next.com/overview/configuration-options#languages-namespaces-resources), and [fallback options](https://www.i18next.com/principles/fallback#fallback));
+
 ```
 {
     resolve: `gatsby-plugin-react-i18next`,
@@ -663,8 +658,8 @@ module.exports = {
 
 ## Mentions
 
-- [Best internationalization for Gatsby](https://dev.to/adrai/best-internationalization-for-gatsby-mkf) by 
-Adriano Raiano
+- [Best internationalization for Gatsby](https://dev.to/adrai/best-internationalization-for-gatsby-mkf) by
+  Adriano Raiano
 
 ## Credits
 

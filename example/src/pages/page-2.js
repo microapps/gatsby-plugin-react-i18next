@@ -3,14 +3,12 @@
 import {graphql} from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Seo from '../components/seo';
 import {Link, useTranslation, Trans} from 'gatsby-plugin-react-i18next';
 
 const SecondPage = (props) => {
-  const {t} = useTranslation();
   return (
     <Layout>
-      <SEO title={t('Page two')} />
       <h1>
         <Trans>Page two</Trans>
       </h1>
@@ -22,6 +20,11 @@ const SecondPage = (props) => {
       </Link>
     </Layout>
   );
+};
+
+export const Head = () => {
+  const {t} = useTranslation();
+  return <Seo title={t('Page two')} />;
 };
 
 export default SecondPage;
