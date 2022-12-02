@@ -3052,10 +3052,10 @@ braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-browser-lang@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/browser-lang/-/browser-lang-0.1.0.tgz#da9bb26e4f82b4385a51054af5495f6a9de475f7"
-  integrity sha512-p4mdcU9fIsoDtbAVorKtxo5H86mK040MYn96yshyhfN3OF0iySuITgR8IxldI72MJAultMnwqDgwfWWwjUrSsw==
+browser-lang@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/browser-lang/-/browser-lang-0.2.1.tgz#7374d2e033743a7600790189de588a051fd4ea25"
+  integrity sha512-+xmtsTxVZKWrKHoNUQp4Tm7BEXlnMwOMAHZAh1SSot1+n04qHLFIH0K5anX52k5BkcauggbaNlWT8f3bVwDh/Q==
 
 browserslist@^4.0.0, browserslist@^4.14.5, browserslist@^4.16.3, browserslist@^4.16.6, browserslist@^4.17.5, browserslist@^4.18.1, browserslist@^4.21.3, browserslist@^4.21.4, browserslist@^4.6.6:
   version "4.21.4"
@@ -5221,15 +5221,15 @@ gatsby-plugin-page-creator@^5.2.0:
     globby "^11.1.0"
     lodash "^4.17.21"
 
-"gatsby-plugin-react-i18next@file:.yalc/gatsby-plugin-react-i18next":
-  version "1.0.4"
+gatsby-plugin-react-i18next@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-i18next/-/gatsby-plugin-react-i18next-3.0.1.tgz#efa264e3cd7bc33d2276ae5ec88ba8d1c59e0714"
+  integrity sha512-lN7ybB433iPHorQH9fP7HT0slEvll3NM9FjOXeWXJ+Bjizvy8XLU0pZ3D5/vyFjCp1JHAaulWnMcQS5XMgl1hw==
   dependencies:
     bluebird "^3.7.2"
-    browser-lang "^0.1.0"
+    browser-lang "^0.2.1"
     outdent "^0.8.0"
-    path-to-regexp "^6.2.0"
-  optionalDependencies:
-    react-helmet "^6.1.0"
+    path-to-regexp "^6.2.1"
 
 gatsby-plugin-sharp@^5.2.0:
   version "5.2.0"
@@ -7581,7 +7581,7 @@ path-to-regexp@0.1.7:
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==
 
-path-to-regexp@^6.2.0:
+path-to-regexp@^6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-6.2.1.tgz#d54934d6798eb9e5ef14e7af7962c945906918e5"
   integrity sha512-JLyh7xT1kizaEvcaXOQwOc2/Yhw6KZOvPf1S8401UyLk86CU79LN3vl7ztXGm/pZ+YjoyAJ4rxmHwbkBXJX+yw==
@@ -8145,21 +8145,6 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
-react-fast-compare@^3.1.1:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.2.0.tgz#641a9da81b6a6320f270e89724fb45a0b39e43bb"
-  integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
-
-react-helmet@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-6.1.0.tgz#a750d5165cb13cf213e44747502652e794468726"
-  integrity sha512-4uMzEY9nlDlgxr61NL3XbKRy1hEkXmKNXhjbAIOVw5vcFrsdYbH2FEwcNyWvWinl103nXgzYNlns9ca+8kFiWw==
-  dependencies:
-    object-assign "^4.1.1"
-    prop-types "^15.7.2"
-    react-fast-compare "^3.1.1"
-    react-side-effect "^2.1.0"
-
 react-i18next@^12.0.0:
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-12.0.0.tgz#634015a2c035779c5736ae4c2e5c34c1659753b1"
@@ -8186,11 +8171,6 @@ react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825:
     acorn "^6.2.1"
     loose-envify "^1.1.0"
     neo-async "^2.6.1"
-
-react-side-effect@^2.1.0:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
-  integrity sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==
 
 react@^18.2.0:
   version "18.2.0"
