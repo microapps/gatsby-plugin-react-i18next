@@ -74,3 +74,6 @@ dist/
 
 **/.yalc
 **/yalc.lock
+
+# Package-lock.json
+**/*/package-lock.json
