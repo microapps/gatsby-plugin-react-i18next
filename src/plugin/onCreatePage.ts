@@ -102,7 +102,7 @@ export const onCreatePage = async (
       routed: true
     });
     const regexp = new RegExp('/404/?$');
-    if (regexp.test(localePage.path)) {
+    if (regexp.test(localePage.path && lng !== defaultLanguage) {
       localePage.matchPath = `/${lng}/*`;
     }
     if (localePage.matchPath !== undefined) {
